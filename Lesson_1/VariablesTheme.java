@@ -60,20 +60,26 @@ public class VariablesTheme {
         }
 
         private static void printItem4() {
-        byte byteCores = 127;
-        short shortWindowsVersion = 32767;
-        int intResolution = 2147483647;
+        byte testByteVar = 127;
+        short testShortVar = 32767;
+        int testIntVar = 2147483647;
 
         System.out.println("\nПункт 4");
-        System.out.println("Начальное значение переменной типа byte - " + byteCores);
-        System.out.println("Значение переменной типа byte + 1 - " + ++byteCores);
-        System.out.println("Значение переменной типа byte - 1 - " + --byteCores);
-        System.out.println("Начальное значение переменной типа short - " + shortWindowsVersion);
-        System.out.println("Значение переменной типа short + 1 - " + ++shortWindowsVersion);
-        System.out.println("Значение переменной типа short - 1 - " + --shortWindowsVersion);
-        System.out.println("Начальное значение переменной типа int - " + intResolution);
-        System.out.println("Значение переменной типа int + 1 - " + ++intResolution);
-        System.out.println("Значение переменной типа int - 1 - " + --intResolution);
+        System.out.println("Начальное значение переменной типа byte - " + testByteVar);
+        System.out.println("Значение переменной типа byte + 1 - " +
+                incrementByteValue(testByteVar));
+        System.out.println("Значение переменной типа byte - 1 - " + 
+                decrementByteValue(testByteVar));
+        System.out.println("Начальное значение переменной типа short - " + testShortVar);
+        System.out.println("Значение переменной типа short + 1 - " + 
+                incrementShortValue(testShortVar));
+        System.out.println("Значение переменной типа short - 1 - " + 
+                decrementShortValue(testShortVar));
+        System.out.println("Начальное значение переменной типа int - " + testIntVar);
+        System.out.println("Значение переменной типа int + 1 - " + 
+                incrementIntValue(testIntVar));
+        System.out.println("Значение переменной типа int - 1 - " + 
+                decrementIntValue(testIntVar));
         }
 
         private static void printItem5() {
@@ -120,15 +126,12 @@ public class VariablesTheme {
 
         private static void printItem7() {
         int srcNum = 123;
-        int hundreds = srcNum / 100;
-        int tens = (srcNum % 100) / 10;
-        int units = (srcNum % 100) % 10;
 
         System.out.println("\nПункт 7");
         System.out.println("\nЧисло N = " + srcNum + " содержит:");
-        System.out.println(hundreds + " сотен");
-        System.out.println(tens + " десятков");
-        System.out.println(units + " единиц");
+        System.out.println(getHundreds(srcNum) + " сотен");
+        System.out.println(getTens(srcNum) + " десятков");
+        System.out.println(getUnits(srcNum) + " единиц");
         }
 
         private static void printItem8() {
@@ -157,14 +160,13 @@ public class VariablesTheme {
 
         private static void printItem9() {
         int srcNum = 345;
-        int hundredDigit = srcNum / 100;
-        int tenDigit = (srcNum % 100) / 10;
-        int unitDigit = (srcNum % 100) % 10;
 
         System.out.println("\nПункт 9");
         System.out.println("Число N = " + srcNum);
-        System.out.println("Сумма цифр числа N = " + (hundredDigit + tenDigit + unitDigit));
-        System.out.println("Произведение цифр числа N = " + (hundredDigit * tenDigit * unitDigit));
+        System.out.println("Сумма цифр числа N = " + (getHundreds(srcNum) + getTens(srcNum) + 
+                getUnits(srcNum)));
+        System.out.println("Произведение цифр числа N = " + (getHundreds(srcNum) * 
+                getTens(srcNum) * getUnits(srcNum)));
         }
 
         private static void printItem10() {
@@ -174,6 +176,42 @@ public class VariablesTheme {
         System.out.println("Количество секунд = " + initSeconds);
         System.out.println("Время = " + getHours(initSeconds) + ":" 
                 + getMinutes(initSeconds) + ":" + getSeconds(initSeconds));
+        }
+
+        private static byte incrementByteValue(byte value) {
+            return ++value;
+        }
+
+        private static byte decrementByteValue(byte value) {
+            return --value;
+        }
+
+        private static short incrementShortValue(short value) {
+            return ++value;
+        }
+
+        private static short decrementShortValue(short value) {
+            return --value;
+        }
+
+        private static int incrementIntValue(int value) {
+            return ++value;
+        }
+
+        private static int decrementIntValue(int value) {
+            return --value;
+        }
+
+        private static int getHundreds(int number) {
+            return number / 100;
+        }
+
+        private static int getTens(int number) {
+            return (number % 100) / 10;
+        }
+
+        private static int getUnits(int number) {
+            return (number % 100) % 10;
         }
 
         private static int getHours(int seconds) {
