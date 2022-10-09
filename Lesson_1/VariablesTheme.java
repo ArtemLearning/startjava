@@ -23,7 +23,7 @@ public class VariablesTheme {
         char companyNameFirstLetter = 'S';
         boolean isNotebook = true;
 
-        System.out.println("\nПункт 1");
+        System.out.println("\n1. Создание переменных и вывод их значений на консоль");
         System.out.println("Количество ядер - " + coresQuantity);
         System.out.println("Версия Windows - " + windowsVersion);
         System.out.println("Разрешение по горизонтали - " + horizontalResolution);
@@ -41,7 +41,7 @@ public class VariablesTheme {
         float discountValue = ( ( penPrice + bookPrice ) / 100 ) * discountPercent;
         float totalSum = ( penPrice + bookPrice ) - discountValue;
         
-        System.out.println("\nПункт 2");
+        System.out.println("\n2. Расчет стоимости товара со скидкой");
         System.out.println("Сумма скидки - " + discountValue + " руб.");
         System.out.println("Общая стоимость товаров со скидкой - " + totalSum + " руб.");
         }
@@ -52,7 +52,7 @@ public class VariablesTheme {
         String str3 = "J  J  aaaaa  V V  aaaaa ";
         String str4 = " JJ  a     a  V  a     a";
 
-        System.out.println("\nПункт 3");
+        System.out.println("\n3. Вывод на консоль слова JAVA");
         System.out.println(str1);
         System.out.println(str2);
         System.out.println(str3);
@@ -64,7 +64,7 @@ public class VariablesTheme {
         short testShortVar = 32767;
         int testIntVar = 2147483647;
 
-        System.out.println("\nПункт 4");
+        System.out.println("\n4. Отображение min и max значений числовых типов данных");
         System.out.println("Начальное значение переменной типа byte - " + testByteVar);
         System.out.println("Значение переменной типа byte + 1 - " +
                 incrementByteValue(testByteVar));
@@ -87,8 +87,8 @@ public class VariablesTheme {
         int srcNum2 = 5;
         int swapNum;
 
-        System.out.println("\nПункт 5");
-        System.out.println("\nПерестановка с помощью третьей переменной");
+        System.out.println("\n5. Перестановка значений переменных");
+        System.out.println("Перестановка с помощью третьей переменной");
         System.out.println("Начальные значения переменных\n" + srcNum1 + "\n" + srcNum2);
         swapNum = srcNum1;
         srcNum1 = srcNum2;
@@ -115,7 +115,7 @@ public class VariablesTheme {
         char srcCharD = '^';
         char srcCharE = '_';
 
-        System.out.println("\nПункт 6");
+        System.out.println("\n6. Вывод символов и их кодов");
         System.out.println("Символ" + "\t" + "Номер в ASCII таблице");
         System.out.println(srcCharA + "\t" + (int) srcCharA);
         System.out.println(srcCharB + "\t" + (int) srcCharB);
@@ -127,7 +127,7 @@ public class VariablesTheme {
         private static void printItem7() {
         int srcNum = 123;
 
-        System.out.println("\nПункт 7");
+        System.out.println("\n7. Отображение количества сотен, десятков и единиц числа");
         System.out.println("\nЧисло N = " + srcNum + " содержит:");
         System.out.println(getHundreds(srcNum) + " сотен");
         System.out.println(getTens(srcNum) + " десятков");
@@ -150,7 +150,7 @@ public class VariablesTheme {
         String str5 = "" + slash + underscore + underscore + underscore + slash + backslash +
                 underscore + underscore + space + backslash;
 
-        System.out.println("\nПункт 8");
+        System.out.println("\n8. Вывод на консоль ASCII-арт Дюка");
         System.out.println(str1);
         System.out.println(str2);
         System.out.println(str3);
@@ -161,7 +161,7 @@ public class VariablesTheme {
         private static void printItem9() {
         int srcNum = 345;
 
-        System.out.println("\nПункт 9");
+        System.out.println("\n9. Произведение и сумма цифр числа");
         System.out.println("Число N = " + srcNum);
         System.out.println("Сумма цифр числа N = " + (getHundreds(srcNum) + getTens(srcNum) + 
                 getUnits(srcNum)));
@@ -172,7 +172,7 @@ public class VariablesTheme {
         private static void printItem10() {
         int initSeconds = 86399;
 
-        System.out.println("\nПункт 10");
+        System.out.println("\n10. Преобразование секунд");
         System.out.println("Количество секунд = " + initSeconds);
         System.out.println("Время = " + getHours(initSeconds) + ":" 
                 + getMinutes(initSeconds) + ":" + getSeconds(initSeconds));
