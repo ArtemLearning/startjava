@@ -1,7 +1,6 @@
 public class VariablesTheme {
 
     public static void main(String[] args) {
-
         printItem1();
         printItem2();
         printItem3();
