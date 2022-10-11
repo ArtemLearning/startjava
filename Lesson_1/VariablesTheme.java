@@ -2,6 +2,7 @@ public class VariablesTheme {
 
     public static void main(String[] args) {
 
+        System.out.println("\n1. Создание переменных и вывод их значений на консоль");
         byte coresQuantity = 2;
         short windowsVersion = 10;
         int horizontalResolution = 1920;
@@ -11,7 +12,6 @@ public class VariablesTheme {
         char companyNameFirstLetter = 'S';
         boolean isNotebook = true;
 
-        System.out.println("\n1. Создание переменных и вывод их значений на консоль");
         System.out.println("Количество ядер - " + coresQuantity);
         System.out.println("Версия Windows - " + windowsVersion);
         System.out.println("Разрешение по горизонтали - " + horizontalResolution);
@@ -21,32 +21,32 @@ public class VariablesTheme {
         System.out.println("Первая буква названия компании - " + companyNameFirstLetter);
         System.out.println("Является ли рабочий компьютер ноутбуком? - " + isNotebook);
 
+        System.out.println("\n2. Расчет стоимости товара со скидкой");
         int penPrice = 100;
         int bookPrice = 200;
         int discountPercent = 11;
         float discountValue = ( ( penPrice + bookPrice ) / 100 ) * discountPercent;
         float totalSum = ( penPrice + bookPrice ) - discountValue;
-        
-        System.out.println("\n2. Расчет стоимости товара со скидкой");
+
         System.out.println("Сумма скидки - " + discountValue + " руб.");
         System.out.println("Общая стоимость товаров со скидкой - " + totalSum + " руб.");
 
+        System.out.println("\n3. Вывод на консоль слова JAVA");
         String str1 = "   J    a  v     v  a    ";
         String str2 = "   J   a a  v   v  a a   ";
         String str3 = "J  J  aaaaa  V V  aaaaa ";
         String str4 = " JJ  a     a  V  a     a";
 
-        System.out.println("\n3. Вывод на консоль слова JAVA");
         System.out.println(str1);
         System.out.println(str2);
         System.out.println(str3);
         System.out.println(str4);
 
+        System.out.println("\n4. Отображение min и max значений числовых типов данных");
         byte testByteVar = 127;
         short testShortVar = 32767;
         int testIntVar = 2147483647;
 
-        System.out.println("\n4. Отображение min и max значений числовых типов данных");
         System.out.println("Начальное значение переменной типа byte - " + testByteVar);
         testByteVar++;
         System.out.println("Значение переменной типа byte + 1 - " + testByteVar);
@@ -65,11 +65,11 @@ public class VariablesTheme {
         testIntVar = testIntVar - 2;
         System.out.println("Значение переменной типа int - 1 - " + testIntVar);
 
+        System.out.println("\n5. Перестановка значений переменных");
         int srcNum1 = 2;
         int srcNum2 = 5;
         int swapNum;
 
-        System.out.println("\n5. Перестановка значений переменных");
         System.out.println("Перестановка с помощью третьей переменной");
         System.out.println("Начальные значения переменных\n" + srcNum1 + "\n" + srcNum2);
         swapNum = srcNum1;
@@ -89,13 +89,13 @@ public class VariablesTheme {
         srcNum2 = swapNum^srcNum2;
         System.out.println("Конечные значения переменных\n" + srcNum1 + "\n" + srcNum2);
 
+        System.out.println("\n6. Вывод символов и их кодов");
         char srcCharA = '#';
         char srcCharB = '&';
         char srcCharC = '@';
         char srcCharD = '^';
         char srcCharE = '_';
 
-        System.out.println("\n6. Вывод символов и их кодов");
         System.out.println("Символ" + "\t" + "Номер в ASCII таблице");
         System.out.println(srcCharA + "\t" + (int) srcCharA);
         System.out.println(srcCharB + "\t" + (int) srcCharB);
@@ -103,14 +103,15 @@ public class VariablesTheme {
         System.out.println(srcCharD + "\t" + (int) srcCharD);
         System.out.println(srcCharE + "\t" + (int) srcCharE);
 
+        System.out.println("\n7. Отображение количества сотен, десятков и единиц числа");
         int srcNum = 123;
 
-        System.out.println("\n7. Отображение количества сотен, десятков и единиц числа");
         System.out.println("\nЧисло N = " + srcNum + " содержит:");
         System.out.println((srcNum / 100) + " сотен");
         System.out.println(((srcNum % 100) / 10) + " десятков");
         System.out.println(((srcNum % 100) % 10) + " единиц");
 
+        System.out.println("\n8. Вывод на консоль ASCII-арт Дюка");
         char space = ' ';
         char slash = '/';
         char backslash = '\\';
@@ -126,25 +127,24 @@ public class VariablesTheme {
         String str5 = "" + slash + underscore + underscore + underscore + slash + backslash +
                 underscore + underscore + space + backslash;
 
-        System.out.println("\n8. Вывод на консоль ASCII-арт Дюка");
         System.out.println(str1);
         System.out.println(str2);
         System.out.println(str3);
         System.out.println(str4);
         System.out.println(str5);
 
+        System.out.println("\n9. Произведение и сумма цифр числа");
         srcNum = 345;
 
-        System.out.println("\n9. Произведение и сумма цифр числа");
         System.out.println("Число N = " + srcNum);
         System.out.println("Сумма цифр числа N = " + ((srcNum / 100) + ((srcNum % 100) / 10) + 
                 ((srcNum % 100) % 10)));
         System.out.println("Произведение цифр числа N = " + ((srcNum / 100) * 
                 ((srcNum % 100) / 10) * ((srcNum % 100) % 10)));
 
-
-        int initSeconds = 86399;
         System.out.println("\n10. Преобразование секунд");
+        int initSeconds = 86399;
+        
         System.out.println("Количество секунд = " + initSeconds);
         System.out.println("Время = " + (initSeconds / 3600) + ":" 
                 + (initSeconds % 3600 / 60) + ":" + ((initSeconds% 3600) % 60));
