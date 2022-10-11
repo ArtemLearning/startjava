@@ -1,19 +1,7 @@
 public class VariablesTheme {
 
     public static void main(String[] args) {
-        printItem1();
-        printItem2();
-        printItem3();
-        printItem4();
-        printItem5();
-        printItem6();
-        printItem7();
-        printItem8();
-        printItem9();
-        printItem10();
-}
 
-        private static void printItem1() {
         byte coresQuantity = 2;
         short windowsVersion = 10;
         int horizontalResolution = 1920;
@@ -32,9 +20,7 @@ public class VariablesTheme {
         System.out.println("Тактовая частота процессора, ГГц - " + freqProcGhz);
         System.out.println("Первая буква названия компании - " + companyNameFirstLetter);
         System.out.println("Является ли рабочий компьютер ноутбуком? - " + isNotebook);
-        }
-        
-        private static void printItem2() {
+
         int penPrice = 100;
         int bookPrice = 200;
         int discountPercent = 11;
@@ -44,9 +30,7 @@ public class VariablesTheme {
         System.out.println("\n2. Расчет стоимости товара со скидкой");
         System.out.println("Сумма скидки - " + discountValue + " руб.");
         System.out.println("Общая стоимость товаров со скидкой - " + totalSum + " руб.");
-        }
 
-        private static void printItem3() {
         String str1 = "   J    a  v     v  a    ";
         String str2 = "   J   a a  v   v  a a   ";
         String str3 = "J  J  aaaaa  V V  aaaaa ";
@@ -57,32 +41,30 @@ public class VariablesTheme {
         System.out.println(str2);
         System.out.println(str3);
         System.out.println(str4);
-        }
 
-        private static void printItem4() {
         byte testByteVar = 127;
         short testShortVar = 32767;
         int testIntVar = 2147483647;
 
         System.out.println("\n4. Отображение min и max значений числовых типов данных");
         System.out.println("Начальное значение переменной типа byte - " + testByteVar);
-        System.out.println("Значение переменной типа byte + 1 - " +
-                incrementByteValue(testByteVar));
-        System.out.println("Значение переменной типа byte - 1 - " + 
-                decrementByteValue(testByteVar));
+        testByteVar++;
+        System.out.println("Значение переменной типа byte + 1 - " + testByteVar);
+        testByteVar--;
+        testByteVar--;
+        System.out.println("Значение переменной типа byte - 1 - " + testByteVar);
         System.out.println("Начальное значение переменной типа short - " + testShortVar);
-        System.out.println("Значение переменной типа short + 1 - " + 
-                incrementShortValue(testShortVar));
-        System.out.println("Значение переменной типа short - 1 - " + 
-                decrementShortValue(testShortVar));
+        testShortVar++;
+        System.out.println("Значение переменной типа short + 1 - " + testShortVar);
+        testShortVar--;
+        testShortVar--;
+        System.out.println("Значение переменной типа short - 1 - " + testShortVar);
         System.out.println("Начальное значение переменной типа int - " + testIntVar);
-        System.out.println("Значение переменной типа int + 1 - " + 
-                incrementIntValue(testIntVar));
-        System.out.println("Значение переменной типа int - 1 - " + 
-                decrementIntValue(testIntVar));
-        }
+        testIntVar++;
+        System.out.println("Значение переменной типа int + 1 - " + testIntVar);
+        testIntVar = testIntVar - 2;
+        System.out.println("Значение переменной типа int - 1 - " + testIntVar);
 
-        private static void printItem5() {
         int srcNum1 = 2;
         int srcNum2 = 5;
         int swapNum;
@@ -106,9 +88,7 @@ public class VariablesTheme {
         srcNum1 = swapNum^srcNum1;
         srcNum2 = swapNum^srcNum2;
         System.out.println("Конечные значения переменных\n" + srcNum1 + "\n" + srcNum2);
-        }
 
-        private static void printItem6() {
         char srcCharA = '#';
         char srcCharB = '&';
         char srcCharC = '@';
@@ -122,30 +102,26 @@ public class VariablesTheme {
         System.out.println(srcCharC + "\t" + (int) srcCharC);
         System.out.println(srcCharD + "\t" + (int) srcCharD);
         System.out.println(srcCharE + "\t" + (int) srcCharE);
-        }
 
-        private static void printItem7() {
         int srcNum = 123;
 
         System.out.println("\n7. Отображение количества сотен, десятков и единиц числа");
         System.out.println("\nЧисло N = " + srcNum + " содержит:");
-        System.out.println(getHundreds(srcNum) + " сотен");
-        System.out.println(getTens(srcNum) + " десятков");
-        System.out.println(getUnits(srcNum) + " единиц");
-        }
+        System.out.println((srcNum / 100) + " сотен");
+        System.out.println(((srcNum % 100) / 10) + " десятков");
+        System.out.println(((srcNum % 100) % 10) + " единиц");
 
-        private static void printItem8() {
         char space = ' ';
         char slash = '/';
         char backslash = '\\';
         char underscore = '_';
         char openingBracket = '(';
         char closingBracket = ')';
-        String str1 = "" + space + space + space + space + slash + backslash;
-        String str2 = "" + space + space + space + slash + space + space + backslash;
-        String str3 = "" + space + space + slash + underscore +openingBracket+ space + 
+        str1 = "" + space + space + space + space + slash + backslash;
+        str2 = "" + space + space + space + slash + space + space + backslash;
+        str3 = "" + space + space + slash + underscore +openingBracket+ space + 
                 closingBracket + backslash;
-        String str4 = "" + space + slash + space + space + space + space + space + space +
+        str4 = "" + space + slash + space + space + space + space + space + space +
                 backslash;
         String str5 = "" + slash + underscore + underscore + underscore + slash + backslash +
                 underscore + underscore + space + backslash;
@@ -156,73 +132,21 @@ public class VariablesTheme {
         System.out.println(str3);
         System.out.println(str4);
         System.out.println(str5);
-        }
 
-        private static void printItem9() {
-        int srcNum = 345;
+        srcNum = 345;
 
         System.out.println("\n9. Произведение и сумма цифр числа");
         System.out.println("Число N = " + srcNum);
-        System.out.println("Сумма цифр числа N = " + (getHundreds(srcNum) + getTens(srcNum) + 
-                getUnits(srcNum)));
-        System.out.println("Произведение цифр числа N = " + (getHundreds(srcNum) * 
-                getTens(srcNum) * getUnits(srcNum)));
-        }
+        System.out.println("Сумма цифр числа N = " + ((srcNum / 100) + ((srcNum % 100) / 10) + 
+                ((srcNum % 100) % 10)));
+        System.out.println("Произведение цифр числа N = " + ((srcNum / 100) * 
+                ((srcNum % 100) / 10) * ((srcNum % 100) % 10)));
 
-        private static void printItem10() {
+
         int initSeconds = 86399;
-
         System.out.println("\n10. Преобразование секунд");
         System.out.println("Количество секунд = " + initSeconds);
-        System.out.println("Время = " + getHours(initSeconds) + ":" 
-                + getMinutes(initSeconds) + ":" + getSeconds(initSeconds));
-        }
-
-        private static byte incrementByteValue(byte value) {
-            return ++value;
-        }
-
-        private static byte decrementByteValue(byte value) {
-            return --value;
-        }
-
-        private static short incrementShortValue(short value) {
-            return ++value;
-        }
-
-        private static short decrementShortValue(short value) {
-            return --value;
-        }
-
-        private static int incrementIntValue(int value) {
-            return ++value;
-        }
-
-        private static int decrementIntValue(int value) {
-            return --value;
-        }
-
-        private static int getHundreds(int number) {
-            return number / 100;
-        }
-
-        private static int getTens(int number) {
-            return (number % 100) / 10;
-        }
-
-        private static int getUnits(int number) {
-            return (number % 100) % 10;
-        }
-
-        private static int getHours(int seconds) {
-            return seconds / 3600;
-        }
-
-        private static int getMinutes(int seconds) {
-            return seconds % 3600 / 60;
-        }
-        
-        private static int getSeconds(int seconds) {
-            return (seconds % 3600) % 60;
-        }        
+        System.out.println("Время = " + (initSeconds / 3600) + ":" 
+                + (initSeconds % 3600 / 60) + ":" + ((initSeconds% 3600) % 60));
+    }
 }
