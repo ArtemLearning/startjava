@@ -1,22 +1,12 @@
 public class IfElseStatementTheme {
 
     public static void main(String[] args) {
-        printItem1();
-        printItem2();
-        printItem3();
-        printItem4();
-        printItem5();
-        printItem6();
-        printItem7();
-        printItem8();
-        printItem9();
-    }
 
-    public static void printItem1() {
+        System.out.println("\n1. Перевод псевдокода на язык Java");
         int age = 32;
         boolean isMale = false;
         float height = 1.92f;
-        System.out.println("\n1. Перевод псевдокода на язык Java");
+
         if (age > 20) {
             System.out.println("Уже можно покупать алкоголь");
         } else {
@@ -39,12 +29,11 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("Предложить общие вещи");
         }
-    }
 
-    public static void printItem2() {
+        System.out.println("\n2. Поиск max и min числа");
         int srcNum1 = 13;
         int srcNum2 = 11;
-        System.out.println("\n2. Поиск max и min числа");
+
         if (srcNum1 > srcNum2) {
             System.out.println("Первое число " +
                 srcNum1 + " больше второго числа "
@@ -57,11 +46,11 @@ public class IfElseStatementTheme {
             System.out.println("Числа " + srcNum1 +
                 " и " + srcNum2 + "равны");
         }
-    }
 
-    public static void printItem3() {
-        int anyNumber = 33;
+
         System.out.println("\n3. Работа с числом");
+        int anyNumber = 33;
+
         switch (anyNumber) {
             case 0:
                 System.out.println("Число " + anyNumber +
@@ -83,35 +72,33 @@ public class IfElseStatementTheme {
                         " нечётное");
                 }
         }
-    }
 
-    public static void printItem4() {
-        int srcNum1 = 432;
-        int srcNum2 = 162;
         System.out.println("\n4. Поиск одинаковых цифр в числах");
+        srcNum1 = 432;
+        srcNum2 = 162;
+
         System.out.println("Число 1 = " + srcNum1 +
             "\nЧисло 2 = " + srcNum2);
-        if (getHundreds(srcNum1) == getHundreds(
-                srcNum2)) {
+        if ((srcNum1 / 100) == (srcNum2 / 100)) {
             System.out.println("Одинаковая цифра "
-                + getHundreds(srcNum1) +
+                + (srcNum1 / 100) +
                 " в сотнях");
         }
-        if (getTens(srcNum1) == getTens(srcNum2)) {
+        if (((srcNum1 % 100) / 10) == ((srcNum2 % 100) / 10)) {
             System.out.println("Одинаковая цифра "
-                + getTens(srcNum1) +
+                + ((srcNum1 % 100) / 10) +
                 " в десятках");
         }
-        if (getUnits(srcNum1) == getUnits(srcNum2)) {
+        if (((srcNum1 % 100) % 10) == ((srcNum2 % 100) % 10)) {
             System.out.println("Одинаковая цифра "
-                + getUnits(srcNum1) +
+                + ((srcNum1 % 100) % 10) +
                 " в единицах");
         }
-    }
 
-    public static void printItem5() {
-        char testCharVar = '\u0057';
         System.out.println("\n5. Определение буквы, числа или символа по их коду");
+
+        char testCharVar = '\u0057';
+
         switch (testCharVar) {
             case '0':
             case '1':
@@ -186,14 +173,11 @@ public class IfElseStatementTheme {
                 System.out.println("Символ " + testCharVar +
                     " - это не буква и не число");
         }
-    }
 
-    public static void printItem6() {
+        System.out.println("\n6. Определение суммы вклада и начисленных банком %");
         float sum = 300000f;
         float percent;
-        
-        System.out.println("\n6. Определение суммы вклада и начисленных банком %");
-        
+
         if (sum <= 100000) {
             percent = sum * 0.05f;
         } else if (sum > 100000 || sum <= 300000) {
@@ -207,18 +191,15 @@ public class IfElseStatementTheme {
             + percent);
         System.out.println("Итоговая сумма = "
             + (sum + percent));
-    }
 
-    public static void printItem7() {
+        System.out.println("\n7. Определение оценки по предметам");
         int historyPercent = 59;
         int developmentPercent = 91;
         int historyMark;
         int developmentMark;
         int middleMark;
         int middlePercent;
-        
 
-        System.out.println("\n7. Определение оценки по предметам");
         middlePercent = (historyPercent + developmentPercent) / 2;
 
         if (historyPercent <= 60) {
@@ -247,16 +228,14 @@ public class IfElseStatementTheme {
         System.out.println(developmentMark + "\tПрограммирование");
         System.out.println("Средний балл оценок - " + middleMark);
         System.out.println("Средний процент - " + middlePercent);
-    }
 
-    public static void printItem8() {
+        System.out.println("\n8. Расчет прибыли");
         int rentPrice = 5000;
         int productPrimeCost = 9000;
         int productCost = 13000;
         int yearPrice;
         char sign = ' ';
 
-        System.out.println("\n8. Расчет прибыли");
         rentPrice = rentPrice * 12;
         productPrimeCost = productPrimeCost * 12;
         productCost = productCost * 12;
@@ -265,18 +244,16 @@ public class IfElseStatementTheme {
             sign = '+'; 
         }
         System.out.println("Прибыль за год: " + sign + yearPrice);
-    }
 
-    public static void printItem9() {
+    System.out.println("\n9. Подсчет количества банкнот");
     int cashNeeded = 567;
     int hundreds;
     int tens;
     int units;
 
-    System.out.println("\n9. Подсчет количества банкнот");
-    hundreds = getHundreds(cashNeeded);
-    tens = getTens(cashNeeded);
-    units = getUnits(cashNeeded);
+    hundreds = cashNeeded / 100;
+    tens = (cashNeeded % 100) / 10;
+    units = (cashNeeded % 100) % 10;
     
     if (tens > 5) {
         units = units + (tens - 5) * 10;
@@ -289,17 +266,4 @@ public class IfElseStatementTheme {
     System.out.println("Исходная сумма = " + ((hundreds * 100) + (tens * 10) + units));
     }
     
-
-    private static int getHundreds(int number) {
-        return number / 100;
-    }
-
-    private static int getTens(int number) {
-        return (number % 100) / 10;
-    }
-
-    private static int getUnits(int number) {
-        return (number % 100) % 10;
-    }
-
 }
