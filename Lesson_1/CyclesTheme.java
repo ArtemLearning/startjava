@@ -143,24 +143,18 @@ public class CyclesTheme {
     for (i = 0; i <= 47; i++) {
         if (i % 2 != 0) {
             digitAsText = (char) i;
-            System.out.printf("%3d",i);
-            System.out.printf("\t");
-            System.out.printf("%4c",digitAsText);
-            System.out.print("\n");
+            System.out.printf("%3d\t%4c\n",i,digitAsText);
         }
     }
     for (i=97 ;i < 123; i++ ) {
         if (i % 2 == 0) {
             digitAsText = (char) i;
-            System.out.printf("%3d",i);
-            System.out.printf("\t");
-            System.out.printf("%4c",digitAsText);
-            System.out.print("\n");
+            System.out.printf("%3d\t%4c\n",i,digitAsText);
         }
     }
 
     System.out.println("\n8. Проверка, является ли число палиндромом");
-    testVar = 1234321;
+    testVar2 = testVar1 = 1234321;
     int digit1 = 0;
     int digit2 = 0;
     int digit3 = 0;
@@ -168,12 +162,95 @@ public class CyclesTheme {
     int digit5 = 0;
     int digit6 = 0;
     int digit7 = 0;
-    while (testVar > 0) {
-        digit1 = testVar % 10;
-        testVar = testVar / 10;
+
+    iterator = 0;
+    while (testVar1 > 0) {
+        switch (iterator) {
+            case 0: {
+                digit7 = testVar1 % 10;
+            }
+            case 1:{
+                digit6 = testVar1 % 10;
+            }
+            case 2:{
+                digit5 = testVar1 % 10;
+            }         
+            case 3:{
+                digit4 = testVar1 % 10;
+            }
+            case 4:{
+                digit3 = testVar1 % 10;
+            }
+            case 5:{
+                digit2 = testVar1 % 10;
+            }
+            case 6:{
+                digit1 = testVar1 % 10;
+            }
+        }
+                testVar1 = testVar1 / 10;
+                iterator++;
+    }
+    if (digit1 == digit7 && digit2 == digit6 && digit3 == digit5) {
+        System.out.println("Число " + testVar2 + " является палиндромом");
+    } else {
+        System.out.println("Число " + testVar2 + " не является палиндромом");
     }
 
+    System.out.println("\n9. Определение, является ли число счастливым");
+    testVar1 = testVar = 442622;
 
+    iterator = 0;
+    while (testVar > 0) {
+        switch (iterator) {
+            case 0: {
+                digit6 = testVar % 10;
+            }
+            case 1:{
+                digit5 = testVar % 10;
+            }
+            case 2:{
+                digit4 = testVar % 10;
+            }         
+            case 3:{
+                digit3 = testVar % 10;
+            }
+            case 4:{
+                digit2 = testVar % 10;
+            }
+            case 5:{
+                digit1 = testVar % 10;
+            }
+        }
+                testVar = testVar / 10;
+                iterator++;
+    }
+        System.out.println("Сумма цифр " + digit1 + "" + digit2 + "" + digit3 + " = " + 
+            (digit1 + digit2 + digit3));
+        System.out.println("Сумма цифр " + digit4 + "" + digit5 + "" + digit6 + " = " + 
+            (digit4 + digit5 + digit6));
+
+    if (digit1 + digit2 + digit3 == digit4 + digit5 + digit6) {
+        System.out.println("Число " + testVar1 + " - cчастливое");
+    } else {
+        System.out.println("Число " + testVar1 + " - неcчастливое");
+    }
+
+    System.out.println("\n10. Вывод таблицы умножения Пифагора");
+    System.out.println("\t\tТАБЛИЦА \t ПИФАГОРА");
+    System.out.printf("  |\t");
+    for (i=2; i < 10 ; i++) {
+    System.out.printf("%2d\t", i);
+    }
+    System.out.printf("\n");
+    System.out.println("-------------------------------------------------------------------");
+    for (i=2; i < 10 ; i++) {
+        System.out.printf("%2d\t", i);
+        for (j=2; j < 10; j++) {
+            System.out.printf("%2d\t", i * j);
+        }
+        System.out.printf("\n");
+    }
 
     }
 }
