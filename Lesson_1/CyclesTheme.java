@@ -237,17 +237,20 @@ public class CyclesTheme {
     }
 
     System.out.println("\n10. Вывод таблицы умножения Пифагора");
-    System.out.println("\t\tТАБЛИЦА \t ПИФАГОРА");
-    System.out.printf("  |\t");
+    System.out.println("   ТАБЛИЦА \t ПИФАГОРА");
+    System.out.printf("   |");
     for (i=2; i < 10 ; i++) {
-    System.out.printf("%2d\t", i);
+    System.out.printf("%2d ", i);
     }
     System.out.printf("\n");
-    System.out.println("-------------------------------------------------------------------");
+    for (i=2; i < 30 ; i++) {
+    System.out.printf("-");
+    }
+    System.out.printf("\n");
     for (i=2; i < 10 ; i++) {
-        System.out.printf("%2d\t", i);
+        System.out.printf("%2d |", i);
         for (j=2; j < 10; j++) {
-            System.out.printf("%2d\t", i * j);
+            System.out.printf("%2d ", i * j);
         }
         System.out.printf("\n");
     }
