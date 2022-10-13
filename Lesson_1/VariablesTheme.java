@@ -8,7 +8,7 @@ public class VariablesTheme {
         int horizontalResolution = 1920;
         long remainMemory = 475000000;
         float myOsBundleVersion = 19042.1526f;
-        double freqProcGhz = 2.42;
+        double freqCpuGhz = 2.42;
         char companyNameFirstLetter = 'S';
         boolean isNotebook = true;
 
@@ -17,7 +17,7 @@ public class VariablesTheme {
         System.out.println("Разрешение по горизонтали - " + horizontalResolution);
         System.out.println("Объём занятой памяти - " + remainMemory);
         System.out.println("Версия сборки системы - " + myOsBundleVersion);
-        System.out.println("Тактовая частота процессора, ГГц - " + freqProcGhz);
+        System.out.println("Тактовая частота процессора, ГГц - " + freqCpuGhz);
         System.out.println("Первая буква названия компании - " + companyNameFirstLetter);
         System.out.println("Является ли рабочий компьютер ноутбуком? - " + isNotebook);
 
@@ -25,11 +25,11 @@ public class VariablesTheme {
         int penPrice = 100;
         int bookPrice = 200;
         int discountPercent = 11;
-        float discountValue = ( ( penPrice + bookPrice ) / 100 ) * discountPercent;
-        float totalSum = ( penPrice + bookPrice ) - discountValue;
+        float amountDiscount = ((penPrice + bookPrice) / 100) * discountPercent;
+        float discountPrice = (penPrice + bookPrice) - amountDiscount;
 
-        System.out.println("Сумма скидки - " + discountValue + " руб.");
-        System.out.println("Общая стоимость товаров со скидкой - " + totalSum + " руб.");
+        System.out.println("Сумма скидки - " + amountDiscount + " руб.");
+        System.out.println("Общая стоимость товаров со скидкой - " + discountPrice + " руб.");
 
         System.out.println("\n3. Вывод на консоль слова JAVA");
         String str1 = "   J    a  v     v  a    ";
@@ -43,65 +43,56 @@ public class VariablesTheme {
         System.out.println(str4);
 
         System.out.println("\n4. Отображение min и max значений числовых типов данных");
-        byte testByteVar = 127;
-        short testShortVar = 32767;
-        int testIntVar = 2147483647;
+        byte byteMax = 127;
+        short shortMax = 32767;
+        int intMax = 2147483647;
 
-        System.out.println("Начальное значение переменной типа byte - " + testByteVar);
-        testByteVar++;
-        System.out.println("Значение переменной типа byte + 1 - " + testByteVar);
-        testByteVar--;
-        testByteVar--;
-        System.out.println("Значение переменной типа byte - 1 - " + testByteVar);
-        System.out.println("Начальное значение переменной типа short - " + testShortVar);
-        testShortVar++;
-        System.out.println("Значение переменной типа short + 1 - " + testShortVar);
-        testShortVar--;
-        testShortVar--;
-        System.out.println("Значение переменной типа short - 1 - " + testShortVar);
-        System.out.println("Начальное значение переменной типа int - " + testIntVar);
-        testIntVar++;
-        System.out.println("Значение переменной типа int + 1 - " + testIntVar);
-        testIntVar = testIntVar - 2;
-        System.out.println("Значение переменной типа int - 1 - " + testIntVar);
+        System.out.println("Начальное значение переменной типа byte - " + byteMax);
+        System.out.println("Значение переменной типа byte + 1 - " + byteMax++);
+        System.out.println("Значение переменной типа byte - 1 - " + byteMax--);
+        System.out.println("Начальное значение переменной типа short - " + shortMax);
+        System.out.println("Значение переменной типа short + 1 - " + shortMax++);
+        System.out.println("Значение переменной типа short - 1 - " + shortMax--);
+        System.out.println("Начальное значение переменной типа int - " + intMax);
+        System.out.println("Значение переменной типа int + 1 - " + intMax++);
+        System.out.println("Значение переменной типа int - 1 - " + intMax--);
 
         System.out.println("\n5. Перестановка значений переменных");
         int srcNum1 = 2;
         int srcNum2 = 5;
-        int swapNum;
+        int buffer = srcNum1;
 
         System.out.println("Перестановка с помощью третьей переменной");
         System.out.println("Начальные значения переменных\n" + srcNum1 + "\n" + srcNum2);
-        swapNum = srcNum1;
         srcNum1 = srcNum2;
-        srcNum2 = swapNum;
+        srcNum2 = buffer;
         System.out.println("Конечные значения переменных\n" + srcNum1 + "\n" + srcNum2);
         System.out.println("\nПерестановка без помощи третьей переменной");
         System.out.println("Начальные значения переменных\n" + srcNum1 + "\n" + srcNum2);
-        srcNum1 = srcNum2 + srcNum1;
+        srcNum1 += srcNum2;
         srcNum2 = srcNum1 - srcNum2;
-        srcNum1 = srcNum1 - srcNum2;
+        srcNum1 -= srcNum2;
         System.out.println("Конечные значения переменных\n" + srcNum1 + "\n" + srcNum2);
         System.out.println("\nПерестановка с помощью XOR");        
         System.out.println("Начальные значения переменных\n" + srcNum1 + "\n" + srcNum2);
-        swapNum = srcNum1^srcNum2;
-        srcNum1 = swapNum^srcNum1;
-        srcNum2 = swapNum^srcNum2;
+        srcNum1 ^= srcNum2;
+        srcNum2 ^= srcNum1;
+        srcNum1 ^= buffer;
         System.out.println("Конечные значения переменных\n" + srcNum1 + "\n" + srcNum2);
 
         System.out.println("\n6. Вывод символов и их кодов");
-        char srcCharA = '#';
-        char srcCharB = '&';
-        char srcCharC = '@';
-        char srcCharD = '^';
-        char srcCharE = '_';
+        char charA = '#';
+        char charB = '&';
+        char charC = '@';
+        char charD = '^';
+        char charE = '_';
 
-        System.out.println("Символ" + "\t" + "Номер в ASCII таблице");
-        System.out.println(srcCharA + "\t" + (int) srcCharA);
-        System.out.println(srcCharB + "\t" + (int) srcCharB);
-        System.out.println(srcCharC + "\t" + (int) srcCharC);
-        System.out.println(srcCharD + "\t" + (int) srcCharD);
-        System.out.println(srcCharE + "\t" + (int) srcCharE);
+        System.out.println("Символ\t" + "Номер в ASCII таблице");
+        System.out.println(charA + "\t" + (int) charA);
+        System.out.println(charB + "\t" + (int) charB);
+        System.out.println(charC + "\t" + (int) charC);
+        System.out.println(charD + "\t" + (int) charD);
+        System.out.println(charE + "\t" + (int) charE);
 
         System.out.println("\n7. Отображение количества сотен, десятков и единиц числа");
         int srcNum = 123;
@@ -109,7 +100,7 @@ public class VariablesTheme {
         System.out.println("\nЧисло N = " + srcNum + " содержит:");
         System.out.println((srcNum / 100) + " сотен");
         System.out.println(((srcNum % 100) / 10) + " десятков");
-        System.out.println(((srcNum % 100) % 10) + " единиц");
+        System.out.println((srcNum % 10) + " единиц");
 
         System.out.println("\n8. Вывод на консоль ASCII-арт Дюка");
         char space = ' ';
@@ -118,35 +109,31 @@ public class VariablesTheme {
         char underscore = '_';
         char openingBracket = '(';
         char closingBracket = ')';
-        str1 = "" + space + space + space + space + slash + backslash;
-        str2 = "" + space + space + space + slash + space + space + backslash;
-        str3 = "" + space + space + slash + underscore +openingBracket+ space + 
-                closingBracket + backslash;
-        str4 = "" + space + slash + space + space + space + space + space + space +
-                backslash;
-        String str5 = "" + slash + underscore + underscore + underscore + slash + backslash +
-                underscore + underscore + space + backslash;
 
-        System.out.println(str1);
-        System.out.println(str2);
-        System.out.println(str3);
-        System.out.println(str4);
-        System.out.println(str5);
+        System.out.println("" + space + space + space + space + slash + backslash);
+        System.out.println("" + space + space + space + slash + space + space + backslash);
+        System.out.println("" + space + space + slash + underscore +openingBracket+ space + 
+                closingBracket + backslash);
+        System.out.println("" + space + slash + space + space + space + space + space + space +
+                backslash);
+        System.out.println("" + slash + underscore + underscore + underscore + underscore + 
+                slash + backslash + underscore + underscore + backslash);
 
         System.out.println("\n9. Произведение и сумма цифр числа");
         srcNum = 345;
+        int hundreds = srcNum / 100;
+        int tens = ((srcNum % 100) / 10);
+        int units = srcNum % 10;
 
         System.out.println("Число N = " + srcNum);
-        System.out.println("Сумма цифр числа N = " + ((srcNum / 100) + ((srcNum % 100) / 10) + 
-                ((srcNum % 100) % 10)));
-        System.out.println("Произведение цифр числа N = " + ((srcNum / 100) * 
-                ((srcNum % 100) / 10) * ((srcNum % 100) % 10)));
+        System.out.println("Сумма цифр числа N = " + (hundreds + tens + units));
+        System.out.println("Произведение цифр числа N = " + (hundreds * tens * units));
 
         System.out.println("\n10. Преобразование секунд");
         int initSeconds = 86399;
         
         System.out.println("Количество секунд = " + initSeconds);
         System.out.println("Время = " + (initSeconds / 3600) + ":" 
-                + (initSeconds % 3600 / 60) + ":" + ((initSeconds% 3600) % 60));
+                + (initSeconds % 3600 / 60) + ":" + (initSeconds % 60));
     }
 }
