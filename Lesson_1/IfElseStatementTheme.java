@@ -80,13 +80,13 @@ public class IfElseStatementTheme {
         char testCharVar = '\u0057';
 
         if(testCharVar >= '0' && testCharVar <= '9') {
-            System.out.println("Символ " + testCharVar + " - это число");
+            System.out.println("Символ " + testCharVar + " - это цифра");
         } else if (testCharVar >= 'a' && testCharVar <= 'z') {
             System.out.println("Символ " + testCharVar + " - это маленькая буква");
         } else if (testCharVar >= 'A' && testCharVar <= 'Z') {
             System.out.println("Символ " + testCharVar + " - это большая буква");
         } else {
-            System.out.println("Символ " + testCharVar + " - это не буква и не число");
+            System.out.println("Символ " + testCharVar + " - это не буква и не цифра");
         }
 
         System.out.println("\n6. Определение суммы вклада и начисленных банком %");
@@ -170,7 +170,7 @@ public class IfElseStatementTheme {
             ones = ones + (tens - 5) * 10;
             tens = 5;
         }
-        
+
         System.out.println("Номинал \t" + "Количество");
         System.out.println("Сотни   \t" + hundreds);
         System.out.println("Десятки \t" + tens);
