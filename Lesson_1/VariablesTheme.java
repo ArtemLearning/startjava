@@ -1,4 +1,4 @@
-public class VariablesTheme {
+ public class VariablesTheme {
 
     public static void main(String[] args) {
         System.out.println("\n1. Создание переменных и вывод их значений на консоль");
@@ -127,9 +127,9 @@ public class VariablesTheme {
         int tens = ((srcNum % 100) / 10);
         int ones = srcNum % 10;
 
-        System.out.println("Число N = " + srcNum);
-        System.out.println("Сумма цифр числа N = " + (hundreds + tens + ones));
-        System.out.println("Произведение цифр числа N = " + (hundreds * tens * ones));
+        System.out.println("Число = " + srcNum);
+        System.out.println("Сумма цифр числа " + srcNum + " = " + (hundreds + tens + ones));
+        System.out.println("Произведение цифр числа " + srcNum + " = " + (hundreds * tens * ones));
 
         System.out.println("\n10. Преобразование секунд");
         int initSeconds = 86399;
