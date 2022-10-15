@@ -24,7 +24,7 @@ public class Calculator {
             System.out.println("Деление на ноль!");
             if (calcNum1 > 0) {
                 result = (float) Float.POSITIVE_INFINITY;
-            } else if (calcNum1 < 0){
+            } else if (calcNum1 < 0) {
             result = (float) Float.NEGATIVE_INFINITY;
             } else {
                 result = (float) Float.NaN;
