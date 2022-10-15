@@ -35,8 +35,7 @@ public class IfElseStatementTheme {
         int srcNum2 = 11;
 
         if (srcNum1 > srcNum2) {
-            System.out.println("Первое число " +
-                srcNum1 + " больше второго числа " + srcNum2);
+            System.out.println("Первое число " + srcNum1 + " больше второго числа " + srcNum2);
         } else if (srcNum1 < srcNum2) {
             System.out.println("Второе число " + srcNum2 + " больше первого числа " + srcNum1);
         } else {
@@ -77,43 +76,37 @@ public class IfElseStatementTheme {
         }
 
         System.out.println("\n5. Определение буквы, числа или символа по их коду");
-        char testCharVar = '\u0057';
+        char symbol = '\u0057';
 
-        if(testCharVar >= '0' && testCharVar <= '9') {
-            System.out.println("Символ " + testCharVar + " - это цифра");
-        } else if (testCharVar >= 'a' && testCharVar <= 'z') {
-            System.out.println("Символ " + testCharVar + " - это маленькая буква");
-        } else if (testCharVar >= 'A' && testCharVar <= 'Z') {
-            System.out.println("Символ " + testCharVar + " - это большая буква");
+        if(symbol >= '0' && symbol <= '9') {
+            System.out.println("Символ " + symbol + " - это цифра");
+        } else if (symbol >= 'a' && symbol <= 'z') {
+            System.out.println("Символ " + symbol + " - это маленькая буква");
+        } else if (symbol >= 'A' && symbol <= 'Z') {
+            System.out.println("Символ " + symbol + " - это большая буква");
         } else {
-            System.out.println("Символ " + testCharVar + " - это не буква и не цифра");
+            System.out.println("Символ " + symbol + " - это не буква и не цифра");
         }
 
         System.out.println("\n6. Определение суммы вклада и начисленных банком %");
         float sum = 300000f;
-        float percent;
+        float percent = sum * 0.1f;
 
         if (sum <= 100000) {
             percent = sum * 0.05f;
         } else if (sum > 100000 && sum <= 300000) {
             percent = sum * 0.07f;
-        } else {
-            percent = sum * 0.1f;
-        }
+        } 
 
         System.out.println("Сумма = " + sum);
-        System.out.println("Начисленные проценты = "
-            + percent);
-        System.out.println("Итоговая сумма = "
-            + (sum + percent));
+        System.out.println("Начисленные проценты = " + percent);
+        System.out.println("Итоговая сумма = " + (sum + percent));
 
         System.out.println("\n7. Определение оценки по предметам");
         int historyPercent = 59;
         int developmentPercent = 91;
+        int averagePercent = (historyPercent + developmentPercent) / 2;
         int historyMark;
-        int developmentMark;
-        int middleMark;
-        int middlePercent;
 
         if (historyPercent <= 60) {
             historyMark = 2;
@@ -125,6 +118,7 @@ public class IfElseStatementTheme {
             historyMark = 5;
         }
 
+        int developmentMark;
         if (developmentPercent <= 60) {
             developmentMark = 2;
         } else if (developmentPercent > 60 && developmentPercent < 73) {
@@ -138,10 +132,9 @@ public class IfElseStatementTheme {
         System.out.println("Оценка\t" + "Предмет");
         System.out.println(historyMark + "\tИстория");
         System.out.println(developmentMark + "\tПрограммирование");
-        middleMark = (historyMark + developmentMark) / 2;
-        System.out.println("Средний балл оценок - " + middleMark);
-        middlePercent = (historyPercent + developmentPercent) / 2;
-        System.out.println("Средний процент - " + middlePercent + "%");
+        int averageMark = (historyMark + developmentMark) / 2;
+        System.out.println("Средний балл оценок - " + averageMark);
+        System.out.println("Средний процент - " + averagePercent + "%");
 
         System.out.println("\n8. Расчет прибыли");
         int rentPrice = 5000;
@@ -150,7 +143,7 @@ public class IfElseStatementTheme {
         int yearPrice;
         char sign = ' ';
 
-        yearPrice = (productCost * 12) - ((productPrimeCost * 12) + (rentPrice * 12));
+        yearPrice = (productCost - (productPrimeCost + rentPrice)) * 12;
         if (yearPrice > 0) {
             sign = '+'; 
         }
@@ -158,17 +151,14 @@ public class IfElseStatementTheme {
 
         System.out.println("\n9. Подсчет количества банкнот");
         int cashNeeded = 567;
-        int hundreds;
-        int tens;
-        int ones;
-
-        hundreds = cashNeeded / 100;
-        tens = (cashNeeded % 100) / 10;
-        ones = (cashNeeded % 100) % 10;
+        int hundreds = cashNeeded / 100;
+        int tens = (cashNeeded % 100) / 10;
+        int ones = cashNeeded % 10;
+        int tensLimit = 5; 
     
-        if (tens > 5) {
-            ones = ones + (tens - 5) * 10;
-            tens = 5;
+        if (tens > tensLimit) {
+            ones = ones + (tens - tensLimit) * 10;
+            tens = tensLimit;
         }
 
         System.out.println("Номинал \t" + "Количество");
