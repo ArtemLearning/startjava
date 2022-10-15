@@ -8,11 +8,10 @@ public class MyFirstGame {
         while (guessNumber != targetNum) {
             if (guessNumber < targetNum) {
                 guessNumber = lowerLimit + 5;
-            }
-            if (guessNumber < targetNum) {
-                XSystem.out.println("Число " + guessNumber + " меньше задуманного");
+                System.out.println("Число " + guessNumber + " меньше задуманного");
                 lowerLimit = guessNumber + 5;
-            } else {
+            }
+            if (guessNumber > targetNum) {
                 System.out.println("Число " + guessNumber + " больше задуманного");
                 guessNumber--;
             }
