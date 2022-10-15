@@ -1,7 +1,6 @@
 public class VariablesTheme {
 
     public static void main(String[] args) {
-
         System.out.println("\n1. Создание переменных и вывод их значений на консоль");
         byte coresQuantity = 2;
         short windowsVersion = 10;
@@ -48,14 +47,17 @@ public class VariablesTheme {
         int intMax = 2147483647;
 
         System.out.println("Начальное значение переменной типа byte - " + byteMax);
-        System.out.println("Значение переменной типа byte + 1 - " + byteMax++);
-        System.out.println("Значение переменной типа byte - 1 - " + byteMax--);
+        System.out.println("Значение переменной типа byte + 1 - " + ++byteMax);
+        byteMax = 127;
+        System.out.println("Значение переменной типа byte - 1 - " + --byteMax);
         System.out.println("Начальное значение переменной типа short - " + shortMax);
-        System.out.println("Значение переменной типа short + 1 - " + shortMax++);
-        System.out.println("Значение переменной типа short - 1 - " + shortMax--);
+        System.out.println("Значение переменной типа short + 1 - " + ++shortMax);
+        shortMax = 32767;
+        System.out.println("Значение переменной типа short - 1 - " + --shortMax);
         System.out.println("Начальное значение переменной типа int - " + intMax);
-        System.out.println("Значение переменной типа int + 1 - " + intMax++);
-        System.out.println("Значение переменной типа int - 1 - " + intMax--);
+        System.out.println("Значение переменной типа int + 1 - " + ++intMax);
+        intMax = 2147483647;
+        System.out.println("Значение переменной типа int - 1 - " + --intMax);
 
         System.out.println("\n5. Перестановка значений переменных");
         int srcNum1 = 2;
@@ -123,11 +125,11 @@ public class VariablesTheme {
         srcNum = 345;
         int hundreds = srcNum / 100;
         int tens = ((srcNum % 100) / 10);
-        int units = srcNum % 10;
+        int ones = srcNum % 10;
 
         System.out.println("Число N = " + srcNum);
-        System.out.println("Сумма цифр числа N = " + (hundreds + tens + units));
-        System.out.println("Произведение цифр числа N = " + (hundreds * tens * units));
+        System.out.println("Сумма цифр числа N = " + (hundreds + tens + ones));
+        System.out.println("Произведение цифр числа N = " + (hundreds * tens * ones));
 
         System.out.println("\n10. Преобразование секунд");
         int initSeconds = 86399;
