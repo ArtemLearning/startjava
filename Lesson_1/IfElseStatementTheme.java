@@ -105,7 +105,6 @@ public class IfElseStatementTheme {
         System.out.println("\n7. Определение оценки по предметам");
         int historyPercent = 59;
         int developmentPercent = 91;
-        int averagePercent = (historyPercent + developmentPercent) / 2;
         int historyMark;
 
         if (historyPercent <= 60) {
@@ -134,6 +133,7 @@ public class IfElseStatementTheme {
         System.out.println(developmentMark + "\tПрограммирование");
         int averageMark = (historyMark + developmentMark) / 2;
         System.out.println("Средний балл оценок - " + averageMark);
+        int averagePercent = (historyPercent + developmentPercent) / 2;
         System.out.println("Средний процент - " + averagePercent + "%");
 
         System.out.println("\n8. Расчет прибыли");
