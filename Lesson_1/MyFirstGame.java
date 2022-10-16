@@ -1,14 +1,14 @@
 public class MyFirstGame {
 
     public static void main(String[] args) {
-        int targetNum = 34;
+        int targetNumberber = 34;
         int guessNumber = 5;
 
-        while (guessNumber != targetNum) {
-            if (guessNumber < targetNum) {
+        while (guessNumber != targetNumber) {
+            if (guessNumber < targetNumber) {
                 System.out.println("Число " + guessNumber + " меньше задуманного");
-                guessNumber = guessNumber + 5;
-            } else if (guessNumber > targetNum) {
+                guessNumber = += 5;
+            } else if (guessNumber > targetNumber) {
                 System.out.println("Число " + guessNumber + " больше задуманного");
                 guessNumber--;
             }
