@@ -1,63 +1,61 @@
 public class CyclesTheme {
 
     public static void main(String[] args) {
-
         System.out.println("\n1. Подсчет суммы четных и нечетных чисел");
-        int i = -10;
-        int odds = 0;
-        int evens = 0;
+        int counter = -10;
+        int sumOdd = 0;
+        int sumEven = 0;
 
         do {
-            if (i % 2 == 0) {
-                evens = evens + i;
+            if (counter % 2 == 0) {
+                sumEven += counter;
             } else {
-                odds = odds + i;
+                sumOdd += counter;
             }
-        i++;
-        } while (i <= 21);
-        System.out.println("В промежутке [-10, 21] сумма четных чисел = " + evens + 
-            ", а нечетных = " + odds);
+            counter++;
+        } while (counter <= 21);
+        System.out.println("В промежутке [-10, 21] сумма четных чисел = " + sumEven + 
+                ", а нечетных = " + sumOdd);
 
         System.out.println("\n2. Вывод чисел в интервале (min и max) в порядке убывания");
-        int initNum1 = 10;
-        int initNum2 = 5;
-        int initNum3 = -1;
-        int min = 0;
-        int max = 0;
+        int num1 = 10;
+        int num2 = 5;
+        int num3 = -1;
+        int min = num1;
+        int max = num2;
 
-        if (initNum1 >= initNum2 ) {
-            max = initNum1;
-            min = initNum2;
+        if (num1 >= max) {
+            min = max;
+            max = num1;
         } else {
-            max = initNum2;
-            min = initNum1;
+            min = num1;
         }
-        if (max < initNum3) {
-            max = initNum3;
+        if (num3 > max) {
+            max = num3;
         }
-        if (min > initNum3) {
-            min = initNum3;
+        if (num3 < min) {
+            min = num3;
         }
-        for (i = max; i >= min; i--) {
+        for (int i = max; i > min; i--) {
             System.out.print(i + " ");
         }
 
         System.out.println("\n\n3. Вывод реверсивного числа и суммы его цифр");
-        int srcNum = 1234;
+        int num = 1234;
         int thousands = 0;
         int hundreds = 0;
         int tens = 0;
         int ones = 0;
 
-        while(srcNum > 0) {
-            thousands = srcNum / 1000;
-            hundreds = (srcNum % 1000) / 100;
-            tens = ((srcNum % 1000) % 100) / 10;
-            ones = srcNum % 10;
-            srcNum = srcNum - (thousands * 1000 + hundreds * 100 + tens * 10 + ones);
+        while(num > 0) {
+            thousands = num / 1000;
+            hundreds = (num % 1000) / 100;
+            tens = ((num % 1000) % 100) / 10;
+            ones = num % 10;
+            num = num - (thousands * 1000 + hundreds * 100 + tens * 10 + ones);
         }
         System.out.println("Число в обратном порядке = " + ones + "" + tens + "" + hundreds + 
-            "" + thousands);
+                "" + thousands);
         System.out.println("Сумма цифр числа = " + (thousands + hundreds + tens + ones));
 
         System.out.println("\n4. Вывод чисел на консоль в несколько строк");
@@ -81,16 +79,16 @@ public class CyclesTheme {
         } while (iterator < 5);
 
         System.out.println("\n\n5. Проверка количества единиц на четность");
-        srcNum = 3141591;
+        num = 3141591;
         int digit;
         iterator = 0;
 
-        while (srcNum > 0) {
-            digit = srcNum % 10;
+        while (num > 0) {
+            digit = num % 10;
             if (digit == 1) {
                 iterator++;
             }
-            srcNum = srcNum / 10;
+            num = num / 10;
         }
         if (iterator % 2 == 0) {
             System.out.println("Количество единиц = " + iterator + " чётное");
@@ -211,9 +209,9 @@ public class CyclesTheme {
             iterator++;
         }
         System.out.println("Сумма цифр " + digit1 + "" + digit2 + "" + digit3 + " = " + 
-            (digit1 + digit2 + digit3));
+                (digit1 + digit2 + digit3));
         System.out.println("Сумма цифр " + digit4 + "" + digit5 + "" + digit6 + " = " + 
-            (digit4 + digit5 + digit6));
+                (digit4 + digit5 + digit6));
 
         if (digit1 + digit2 + digit3 == digit4 + digit5 + digit6) {
             System.out.println("Число " + initNum1 + " - cчастливое");
