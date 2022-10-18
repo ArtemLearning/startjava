@@ -1,9 +1,9 @@
 public class Calculator {
 
     public static void main(String[] args) {
-        int a = 123;
-        int b = 12;
-        char operation = '/';
+        int a = 2;
+        int b = 10;
+        char operation = '^';
         float result = 1f;
 
         System.out.println("\nКалькулятор");
@@ -18,18 +18,7 @@ public class Calculator {
         } else if(operation == '*') {
             result = (float) a * b;
         } else if(operation == '/') {
-            if (a !=0) {
-                result = (float) a / b;
-            } else {
-                System.out.println("Деление на ноль!");
-                if (a > 0) {
-                    result = (float) Float.POSITIVE_INFINITY;
-                } else if (a < 0) {
-                result = (float) Float.NEGATIVE_INFINITY;
-                } else {
-                    result = (float) Float.NaN;
-                }
-            }
+            result = (float) a / b;
         } else if(operation == '%') {
             result = (float) a % b;
         } else if(operation == '^') {
