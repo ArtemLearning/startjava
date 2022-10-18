@@ -59,7 +59,7 @@ public class CyclesTheme {
             System.out.printf("%3d", i);
             if (countDigits == 5) {
                 countDigits = 0;
-                System.out.printf("\n");
+                System.out.println();
             }
         }
         for (; countDigits < 5; countDigits++) {
@@ -155,21 +155,20 @@ public class CyclesTheme {
 
         System.out.println("\n9. Определение, является ли число счастливым");
         num = sourceNum = 442622;
-        num1 = 0;
-        num2 = 0;
+        int sumFirstDigits = 0;
+        int sumSecondDigits = 0;
 
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 3; j++) {
                 if (i == 0) {
-                    num1 += (num % 10);
-                    num /= 10;
+                    sumFirstDigits += (num % 10);
                 } else {
-                    num2 += (num % 10);
-                    num /= 10;
+                    sumSecondDigits += (num % 10);
                 }
+                num /= 10;
             }
         }
-        if (num1 == num2) {
+        if (sumFirstDigits == sumSecondDigits) {
             System.out.println("Число " + sourceNum + " - cчастливое");
         } else {
             System.out.println("Число " + sourceNum + " - неcчастливое");
@@ -178,20 +177,20 @@ public class CyclesTheme {
         System.out.println("\n10. Вывод таблицы умножения Пифагора");
         System.out.println("   ТАБЛИЦА \t ПИФАГОРА");
         System.out.printf("   |");
-        for (int i=2; i < 10 ; i++) {
+        for (int i = 2; i < 10; i++) {
             System.out.printf("%2d ", i);
         }
-        System.out.printf("\n");
-        for (int i=2; i < 30 ; i++) {
+        System.out.println();
+        for (int i = 2; i < 30; i++) {
             System.out.printf("-");
         }
-        System.out.printf("\n");
-        for (int i=2; i < 10 ; i++) {
+        System.out.println();
+        for (int i = 2; i < 10; i++) {
             System.out.printf("%2d |", i);
-        for (int j=2; j < 10; j++) {
-            System.out.printf("%2d ", i * j);
-        }
-        System.out.printf("\n");
+            for (int j = 2; j < 10; j++) {
+                System.out.printf("%2d ", i * j);
+            }
+        System.out.println();
         }
     }
 }
