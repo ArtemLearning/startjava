@@ -21,7 +21,7 @@ public class Person {
         System.out.println("Talking");
     }
 
-    void javaLearn() {
+    void learnJava() {
         System.out.println("Learning Java");
     }
 }
