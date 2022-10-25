@@ -16,9 +16,9 @@ public class CalculatorTest {
             while (!simpleCalc.isCorrectOperation());
             System.out.print("\nВведите второе число: ");
             simpleCalc.setSecondNumber(input.nextInt());
-            answer = input.nextLine();
+            answer = input.nextLine(); //Отдельное получение Enter, для корректной работы
             System.out.println("Результат = " + simpleCalc.calculate());
-            while (!(answer.equals("yes") || answer.equals(("no")))) {
+            while (!(answer.equals("yes") || answer.equals(("no")))) {    //equals, а не ==
                 System.out.println("Хотите продолжить вычисления? [yes/no]: ");
                 answer = input.nextLine();
             }
