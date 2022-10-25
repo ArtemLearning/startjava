@@ -65,7 +65,7 @@ public class Wolf {
         System.out.println(name + " воет");
     }
 
-    public boolean hunt() {
+    public boolean isHunt() {
         System.out.println(name + " охотится");
         return true;
     }

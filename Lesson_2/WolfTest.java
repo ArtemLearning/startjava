@@ -7,7 +7,7 @@ public class WolfTest {
         akella.setColor("Серый");
         System.out.println(akella.getColor() + " " + akella.getName() + " " + akella.sit());
 
-        if (akella.hunt()) {
+        if (akella.isHunt()) {
             akella.howl();
         }
 
