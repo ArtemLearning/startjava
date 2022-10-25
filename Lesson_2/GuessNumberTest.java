@@ -15,7 +15,7 @@ public class GuessNumberTest {
         while(true) {
         String answer = " ";
         GuessNumber game = new GuessNumber();
-        System.out.println("Число " + game.getGuessNumber() + " загадано, начинаем игру");
+        System.out.println("Число загадано, начинаем игру");
             while(true) {
                 System.out.print(playerOne.getPlayerName());
                 playerOne.setPlayerNumber();
