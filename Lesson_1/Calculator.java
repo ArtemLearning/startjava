@@ -1,8 +1,8 @@
 public class Calculator {
 
     public static void main(String[] args) {
-        int a = 2;
-        int b = 10;
+        int a = 3;
+        int b = 4;
         char operation = '^';
         float result = 1f;
 
