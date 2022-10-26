@@ -2,8 +2,6 @@ public class JaegerTest {
 
     public static void main(String[] args) {
         Jaeger coyoteTango = new Jaeger();
-        Jaeger strikerEureka = new Jaeger("Striker Eureka", "Mark-5", "Australia", 76.2f, 
-                1.85f, 10, 9);
 
         coyoteTango.setModelName("Coyote Tango");
         coyoteTango.setMark("Mark-1");
@@ -14,6 +12,9 @@ public class JaegerTest {
         coyoteTango.setArmor(4);
 
         System.out.println(coyoteTango.getModelName() + " is from " + coyoteTango.getOrigin());
+
+        Jaeger strikerEureka = new Jaeger("Striker Eureka", "Mark-5", "Australia", 76.2f, 
+                1.85f, 10, 9);
         System.out.println(strikerEureka.getModelName() + " is from " + strikerEureka.getOrigin());
 
         if(coyoteTango.getStrength() > strikerEureka.getStrength()) {
