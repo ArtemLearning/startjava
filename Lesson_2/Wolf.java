@@ -9,7 +9,7 @@ public class Wolf {
         this.isMale = isMale;
     }
 
-    public boolean IsMale() {
+    public boolean isMale() {
         return isMale;
     }
 
