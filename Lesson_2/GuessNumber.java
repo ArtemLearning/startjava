@@ -20,11 +20,11 @@ public class GuessNumber {
             System.out.print(playerOne.getName() + ", введите ваше число: ");
             Scanner input = new Scanner(System.in);
             if (isGuessed(playerOne.getName(), input.nextInt())) {
-                    break;
+                break;
             }
             System.out.print(playerTwo.getName() + ", введите ваше число: ");
             if (isGuessed(playerTwo.getName(), input.nextInt())) {
-                    break;
+                break;
             }
         }
     }
