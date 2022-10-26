@@ -10,7 +10,6 @@ public class JaegerTest {
         coyoteTango.setWeight(2.31f);
         coyoteTango.setStrength(7);
         coyoteTango.setArmor(4);
-
         System.out.println(coyoteTango.getModelName() + " is from " + coyoteTango.getOrigin());
 
         Jaeger strikerEureka = new Jaeger("Striker Eureka", "Mark-5", "Australia", 76.2f, 
