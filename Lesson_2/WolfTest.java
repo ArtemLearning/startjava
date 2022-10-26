@@ -11,8 +11,8 @@ public class WolfTest {
             akella.howl();
         }
 
-        akella.setIsMale(true);
-        if (akella.getIsMale()) {
+        akella.setMale(true);
+        if (akella.isMale()) {
             System.out.println(akella.getName() + " - самец");
         } else {
             System.out.println(akella.getName() + " - самка");

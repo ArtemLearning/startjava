@@ -5,12 +5,12 @@ public class Wolf {
     private int age;
     private String color;
 
-    public boolean getIsMale() {
-        return isMale;
+    public void setMale(boolean isMale) {
+        this.isMale = isMale;
     }
 
-    public void setIsMale(boolean isMale) {
-        this.isMale = isMale;
+    public boolean IsMale() {
+        return isMale;
     }
 
     public String getName() {
