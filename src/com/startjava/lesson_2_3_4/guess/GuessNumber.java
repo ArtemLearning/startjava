@@ -9,7 +9,8 @@ public class GuessNumber {
 
     public GuessNumber() {
         System.out.print("Первый игрок, представьтесь, пожалуйста: ");
-        Scanner input = new Scanner(System.in, "cp866");
+        Scanner input = new Scanner(System.in);
+//        Scanner input = new Scanner(System.in, "cp866");
         playerOne = new Player(input.nextLine());
         System.out.print("Второй игрок, представьтесь, пожалуйста: ");
         playerTwo = new Player(input.nextLine());
