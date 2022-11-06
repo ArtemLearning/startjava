@@ -6,6 +6,8 @@ public class ArrayTheme {
 
         System.out.println("1. Реверс значений массива");
         int[] numbers1 = { 4, 6, 3, 1, 2, 7, 5 };
+
+        System.out.println("Исходный массив:");
         for (int i : numbers1) {
             System.out.print(i + " ");
         }
@@ -18,7 +20,7 @@ public class ArrayTheme {
             numbers1[i] = numbers1[j];
             numbers1[j] = swap;
         }
-        System.out.println("");
+        System.out.println("\nИзменённый массив:");
         for (int i : numbers1) {
             System.out.print(i + " ");
         }
@@ -75,13 +77,58 @@ public class ArrayTheme {
         for(int i = 0; i < charAmount ; i++){
             alphabetLetters[i] = (char)('A' + i);
         }
-        String reverseAlpabet = "";
+        String reverseAlphabet = "";
         for (int i = charAmount - 1; i >= 0; i--) {
-            reverseAlpabet = reverseAlpabet + alphabetLetters[i];
-            System.out.println(reverseAlpabet);
+            reverseAlphabet = reverseAlphabet + alphabetLetters[i];
+            System.out.println(reverseAlphabet);
         }
 
-
-
+        System.out.println("5. Генерация уникальных чисел");
+        int[] uniqueNumbers = new int[30];
+        for (int i = 0; i < uniqueNumbers.length; i++) {
+            int randomNumber = (int) (60 + Math.random()*40);
+            while (isExist(randomNumber, uniqueNumbers)) {
+                randomNumber = (int) (60 + Math.random()*40);
+            }
+            uniqueNumbers[i] = randomNumber;
+        }
+        System.out.println("Массив уникальных чисел:");
+        for (int i = 0; i < uniqueNumbers.length / 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                System.out.print(uniqueNumbers[i * 10 + j] + " ");
+            }
+            System.out.println("");
+        }
+        int[] uniqueSortNumbers = doSort(uniqueNumbers);
+        System.out.println("Сортированный массив уникальных чисел:");
+        for (int i = 0; i < uniqueSortNumbers.length / 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                System.out.print(uniqueSortNumbers[i * 10 + j] + " ");
+            }
+            System.out.println("");
+        }
+    }
+    private static boolean isExist(int number, int[] numbers) {
+        boolean result = false;
+        for (int j : numbers) {
+            if (j == number) {
+                result = true;
+                break;
+            }
+        }
+        return result;
+    }
+    private static int[] doSort(int[] arrayToSort) {
+        int temp;
+        for (int i = arrayToSort.length - 1; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (arrayToSort[j] > arrayToSort[j + 1]) {
+                    temp = arrayToSort[j];
+                    arrayToSort[j] = arrayToSort[j + 1];
+                    arrayToSort[j + 1] = temp;
+                }
+            }
+        }
+        return arrayToSort;
     }
 }
