@@ -33,5 +33,39 @@ public class ArrayTheme {
         }
         System.out.println("\n1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 = " + multiplication);
         System.out.println(numbers2[0] + " " + numbers2[9]);
+
+        System.out.println("3. Удаление элементов массива");
+        double[] doubleNumbers = new double[15];
+
+        for (int i = 0; i < doubleNumbers.length; i++) {
+            doubleNumbers[i] = Math.random();
+        }
+        System.out.println("Исходный массив:");
+        for (int i = 0; i < doubleNumbers.length; i++) {
+            System.out.printf("%.3f", doubleNumbers[i]);
+            System.out.print(" ");
+            if (i == 7) {
+                System.out.println();
+            }
+        }
+        double middleValue = doubleNumbers[doubleNumbers.length / 2];
+        int nullCounter = 0;
+        for (int i = 0; i < doubleNumbers.length; i++) {
+            doubleNumbers[i] =  doubleNumbers[i] < middleValue ? 0 : doubleNumbers[i];
+            if (doubleNumbers[i] == 0) {
+                nullCounter += 1;
+            }
+        }
+        System.out.print("\nЗначение в средней ячейке массива = ");
+        System.out.printf("%.3f", middleValue);
+        System.out.println("\nИзменённый массив:");
+        for (int i = 0; i < doubleNumbers.length; i++) {
+            System.out.printf("%.3f", doubleNumbers[i]);
+            System.out.print(" ");
+            if (i == 7) {
+                System.out.println();
+            }
+        }
+        System.out.println("\nЧисло нулей = " + nullCounter);
     }
 }
