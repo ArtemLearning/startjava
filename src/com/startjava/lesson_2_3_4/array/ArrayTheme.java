@@ -8,9 +8,7 @@ public class ArrayTheme {
         int[] numbers1 = { 4, 6, 3, 1, 2, 7, 5 };
 
         System.out.println("Исходный массив:");
-        for (int i : numbers1) {
-            System.out.print(i + " ");
-        }
+        printIntArray(numbers1);
         for (int i = 0; i < numbers1.length; i++) {
             int j = numbers1.length - (i + 1);
             if (i == j) {
@@ -21,9 +19,7 @@ public class ArrayTheme {
             numbers1[j] = swap;
         }
         System.out.println("\nИзменённый массив:");
-        for (int i : numbers1) {
-            System.out.print(i + " ");
-        }
+        printIntArray(numbers1);
 
         System.out.println("\n2. Вывод произведения элементов массива");
         int[] numbers2 = new int[10];
@@ -86,10 +82,11 @@ public class ArrayTheme {
         System.out.println("5. Генерация уникальных чисел");
         int[] uniqueNumbers = new int[30];
         for (int i = 0; i < uniqueNumbers.length; i++) {
-            int randomNumber = (int) (60 + Math.random()*40);
-            while (isExist(randomNumber, uniqueNumbers)) {
+            int randomNumber;
+            do {
                 randomNumber = (int) (60 + Math.random()*40);
             }
+            while (isExist(randomNumber, uniqueNumbers));
             uniqueNumbers[i] = randomNumber;
         }
         System.out.println("Массив уникальных чисел:");
@@ -107,7 +104,39 @@ public class ArrayTheme {
             }
             System.out.println("");
         }
+
+        System.out.println("\nЗадание со *");
+        String[] initialStringArray =  {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        int size = 0;
+        for (String s : initialStringArray) {
+            if (!s.isBlank()) {
+                size += 1;
+            }
+        }
+        String[] copyStringArray = new String[size];
+        int j = 0;
+        for (int i = 0; i < initialStringArray.length; i++) {
+            if (!initialStringArray[i].isBlank()) {
+                int k = getAmountOfFilledPositions(initialStringArray, i);
+                System.arraycopy(initialStringArray, i, copyStringArray, j, k);
+                j += k;
+                i += k;
+            }
+        }
+        printStringArray(copyStringArray);
+
     }
+    private static void printIntArray(int[] array) {
+        for (int i : array) {
+            System.out.print(i + " ");
+        }
+    }
+    private static void printStringArray(String[] array) {
+        for (String s : array) {
+            System.out.print(s + " ");
+        }
+    }
+
     private static boolean isExist(int number, int[] numbers) {
         boolean result = false;
         for (int j : numbers) {
@@ -130,5 +159,17 @@ public class ArrayTheme {
             }
         }
         return arrayToSort;
+    }
+
+    private static int getAmountOfFilledPositions(String[] stringArray, int index) {
+        int result = 0;
+        for (int i = index; i < stringArray.length; i++) {
+            if (stringArray[i].isBlank()) {
+                break;
+            } else {
+                result += 1;
+            }
+        }
+        return result;
     }
 }
