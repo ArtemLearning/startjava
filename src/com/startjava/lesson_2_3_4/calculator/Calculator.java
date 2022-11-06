@@ -1,86 +1,61 @@
 package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
+    private static int firstOperand;
+    private static int secondOperand;
+    private static char operation;
 
-        private int firstNumber;
-        private int secondNumber;
-        private char operation;
-        private float result = 1f;
-
-        public int getFirstNumber() {
-            return firstNumber;
-        }
-
-        public void setFirstNumber(int inputNumber) {
-            firstNumber = inputNumber;
-        }
-
-        public int getSecondNumber() {
-            return secondNumber;
-        }
-
-        public void setSecondNumber(int inputNumber) {
-            secondNumber = inputNumber;
-        }
-
-        public char getOperation() {
-            return operation;
-        }
-
-        public void setOperation(char inputOperation) {
-            operation = inputOperation;
-            if (!isCorrectOperation()) {
-                operation = ' ';
-                System.out.println("Некорректная операция");
-            }
-        }
-
-        public boolean isCorrectOperation() {
+        public static float calculate() {
            switch(operation) {
-                case '+':
-                    return true;
-                case '-':
-                    return true;
-                case '*':
-                    return true;
-                case '/':
-                    return true;
-                case '^':
-                    return true;
-                case '%':
-                    return true;
-                default:
-                    return false;
-           }
-        }
-
-        public float calculate() {
-           switch(operation) {
-                case '+' : {
-                    return (float) firstNumber + secondNumber;
+                case '+' -> {
+                    return (float) Math.addExact(firstOperand, secondOperand);
                 }
-                case '-': {
-                    return (float) firstNumber - secondNumber;
+                case '-' -> {
+                    return (float) Math.subtractExact(firstOperand, secondOperand);
                 }
-                case '*': {
-                    return (float) firstNumber * secondNumber;
+                case '*' -> {
+                    return (float) Math.multiplyExact(firstOperand, secondOperand);
                 }
-                case '/': {
-                    return (float) firstNumber / secondNumber;
+                case '/' -> {
+                    return (float) Math.divideExact(firstOperand, secondOperand);
                 }
-                case '^': {
-                    float result = 1f;
-                    for (int i = 0; i < secondNumber; i++) {
-                        result = (float) result * firstNumber;
-                    }
-                    return result;
+                case '^' -> {
+                    return (float) Math.pow(firstOperand, secondOperand);
                 }
-                case '%': {
-                    return firstNumber % secondNumber;
+                case '%' -> {
+                    return firstOperand % secondOperand;
                 }
-                default: {
+                default -> {
                     return 0f;
                 }
             }
         }
+
+        public static boolean isGood(String operand) {
+            try {
+                int number = Integer.parseInt(operand);
+                if (number <= 0) {
+                    System.out.println("Число " + operand + " меньше нуля.");
+                    return false;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Число " + operand + " не целое.");
+                return false;
+            }
+            return true;
+        }
+        public static boolean parseExpression(String input) {
+            String[] expression = input.split(" ");
+            try {
+                firstOperand = Calculator.isGood(expression[0]) ? Integer.parseInt(expression[0]) : -1;
+                secondOperand = Calculator.isGood(expression[2]) ? Integer.parseInt(expression[2]) : -1;
+                operation = expression[1].charAt(0);
+                return firstOperand != -1 && secondOperand != -1;
+            }
+            catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Строка введена некорректно. Разделяйте числа и операцию пробелами");
+                return false;
+            }
+    }
+
 }
