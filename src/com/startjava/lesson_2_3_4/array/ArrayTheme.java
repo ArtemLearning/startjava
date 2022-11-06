@@ -29,12 +29,9 @@ public class ArrayTheme {
         for (int i = 0; i < 10; i++) {
             numbers2[i] = i;
             System.out.print(numbers2[i] + " ");
-            if (numbers2[i] != 0 && numbers2[i] != 9) {
-                multiplication = multiplication * numbers2[i];
-            }
+            multiplication = (i != 0) ? (i != 9) ? (multiplication * numbers2[i]) : (multiplication) : (multiplication);
         }
         System.out.println("\n1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 = " + multiplication);
         System.out.println(numbers2[0] + " " + numbers2[9]);
-
     }
 }
