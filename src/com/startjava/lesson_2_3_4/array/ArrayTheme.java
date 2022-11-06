@@ -67,5 +67,21 @@ public class ArrayTheme {
             }
         }
         System.out.println("\nЧисло нулей = " + nullCounter);
+
+        System.out.println("4. Вывод элементов массива лесенкой в обратном порядке");
+        int charAmount = 'Z' - 'A' + 1;
+        char[] alphabetLetters = new char[charAmount];
+
+        for(int i = 0; i < charAmount ; i++){
+            alphabetLetters[i] = (char)('A' + i);
+        }
+        String reverseAlpabet = "";
+        for (int i = charAmount - 1; i >= 0; i--) {
+            reverseAlpabet = reverseAlpabet + alphabetLetters[i];
+            System.out.println(reverseAlpabet);
+        }
+
+
+
     }
 }
