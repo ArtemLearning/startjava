@@ -47,8 +47,8 @@ public class Calculator {
         public static boolean parseExpression(String input) {
             String[] expression = input.split(" ");
             try {
-                firstOperand = Calculator.isGood(expression[0]) ? Integer.parseInt(expression[0]) : -1;
-                secondOperand = Calculator.isGood(expression[2]) ? Integer.parseInt(expression[2]) : -1;
+                firstOperand = isGood(expression[0]) ? Integer.parseInt(expression[0]) : -1;
+                secondOperand = isGood(expression[2]) ? Integer.parseInt(expression[2]) : -1;
                 operation = expression[1].charAt(0);
                 return firstOperand != -1 && secondOperand != -1;
             }
