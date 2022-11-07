@@ -10,7 +10,7 @@ public class GuessNumberTest {
             String answer = " ";
             game.play();
             while (!answer.equals("yes") && !answer.equals("no")) {
-                System.out.println("Хотите продолжить игру? [yes/no]:");
+                System.out.println("\nХотите продолжить игру? [yes/no]:");
                 Scanner input = new Scanner(System.in);
                 answer = input.nextLine();
             }
