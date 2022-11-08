@@ -33,8 +33,6 @@ public class GuessNumber {
                 break;
             }
         }
-
-
     }
 
     public boolean isEqual(int number) {
@@ -69,6 +67,7 @@ public class GuessNumber {
             return false;
         }
     }
+
     private void endOfAttempts(Player player, int attempt) {
         if (attempt == 10) {
             System.out.println("У " + player.getName() + " закончились попытки");
@@ -78,13 +77,11 @@ public class GuessNumber {
     private void showInfo(Player player) {
         int[] playerArray = Arrays.copyOf(player.getGuessNumbers(), player.getLastAttempt());
         System.out.println("Попытки игрока " + player.getName());
-        int j = 1;
         for (int i = 0; i < playerArray.length; i++) {
-            j += 1;
             System.out.print(playerArray[i] + " ");
-        }
-        if (j == 5) {
-            System.out.println("");
+            if (i == 4) {
+                System.out.println();
+            }
         }
     }
 }

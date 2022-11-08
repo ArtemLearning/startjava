@@ -14,6 +14,7 @@ public class Player {
     public String getName() {
         return name;
     }
+
     public int[] getGuessNumbers() {
         return guessNumbers;
     }
