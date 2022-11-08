@@ -17,34 +17,15 @@ public class GuessNumber {
     }
 
     public void play() {
-        guessNumber = 1 + (int) (Math.random() * 100);
-        System.out.println("Число загадано, начинаем игру");
-        System.out.println("У каждого игрока по 10 попыток");
+        initialize();
         for (int i = 1; i <= 10; i++) {
-            System.out.print(playerOne.getName() + ", введите ваше число: ");
-            Scanner input = new Scanner(System.in);
-            if (isGuessed(playerOne, input.nextInt(), i)) {
-                showInfo(playerOne);
+            if (isCorrect(playerOne, i)) {
                 break;
             }
-            System.out.print(playerTwo.getName() + ", введите ваше число: ");
-            if (isGuessed(playerTwo, input.nextInt(), i)) {
-                showInfo(playerTwo);
+            if (isCorrect(playerTwo, i)) {
                 break;
             }
         }
-    }
-
-    public boolean isEqual(int number) {
-        return number == guessNumber;
-    }
-
-    public boolean isBigger(int number) {
-        return number > guessNumber;
-    }
-
-    public boolean isSmaller(int number) {
-        return number < guessNumber;
     }
 
     public boolean isGuessed(Player player, int number, int attempt) {
@@ -52,17 +33,22 @@ public class GuessNumber {
             player.initializeNumbers();
         }
         player.setGuessNumbers(attempt, number);
-        if (isEqual(number)) {
-            System.out.println("Игрок " + player.getName() + " угадал число " + number + " c " + attempt + " попытки" );
+        endOfAttempts(player, attempt);
+        return (compareNumbers(player, number, attempt));
+    }
+
+    private void initialize() {
+        guessNumber = 1 + (int) (Math.random() * 100);
+        System.out.println("Число загадано, начинаем игру");
+        System.out.println("У каждого игрока по 10 попыток");
+    }
+
+    private boolean isCorrect(Player player, int attempt) {
+        System.out.print(player.getName() + ", введите ваше число: ");
+        Scanner input = new Scanner(System.in);
+        if (isGuessed(player, input.nextInt(), attempt)) {
+            showInfo(player);
             return true;
-        } else if (isBigger(number)) {
-            System.out.println("Игрок " + player.getName() + ", ваше число больше задуманного");
-            endOfAttempts(player, attempt);
-            return false;
-        } else if (isSmaller(number)) {
-            System.out.println("Игрок " + player.getName() + ", ваше число меньше задуманного");
-            endOfAttempts(player, attempt);
-            return false;
         } else {
             return false;
         }
@@ -82,6 +68,20 @@ public class GuessNumber {
             if (i == 4) {
                 System.out.println();
             }
+        }
+    }
+
+    private boolean compareNumbers(Player player, int number, int attempt){
+        if (number > guessNumber) {
+            System.out.println("Игрок " + player.getName() + ", ваше число больше задуманного");
+            return false;
+        } else if (number < guessNumber) {
+            System.out.println("Игрок " + player.getName() + ", ваше число меньше задуманного");
+            return false;
+        } else {
+            System.out.println("Игрок " + player.getName() + " угадал число " + number + " c "
+                    + attempt + " попытки");
+            return true;
         }
     }
 }
