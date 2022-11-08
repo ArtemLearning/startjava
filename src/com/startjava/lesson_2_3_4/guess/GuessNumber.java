@@ -72,6 +72,7 @@ public class GuessNumber {
     }
 
     private boolean compareNumbers(Player player, int number, int attempt){
+        return number > guessNumber ? false : number < guessNumber ? false : true;
         if (number > guessNumber) {
             System.out.println("Игрок " + player.getName() + ", ваше число больше задуманного");
             return false;
