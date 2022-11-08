@@ -28,7 +28,7 @@ public class ArrayTheme {
             intNumbers2[i] = i;
             multiDigits = (i != 0) ? (i != 9) ? (multiDigits * intNumbers2[i]) : (multiDigits) : (multiDigits);
         }
-        for (int i = 1; i < intNumbers2.length - 1; i ++) {
+        for (int i = 1; i < intNumbers2.length - 1; i++) {
             if (i == intNumbers2.length - 2) {
                 System.out.print(intNumbers2[i]);
             } else {
@@ -65,31 +65,26 @@ public class ArrayTheme {
         System.out.println("4. Вывод элементов массива лесенкой в обратном порядке");
         int charAmount = 'Z' - 'A' + 1;
         char[] engAlphabet = new char[charAmount];
-        for(int i = 0; i < charAmount; i++) {
+        for (int i = 0; i < charAmount; i++) {
             engAlphabet[i] = (char) ('A' + i);
         }
-        String reverseAlphabet = "";
         for (int i = charAmount - 1; i >= 0; i--) {
-            reverseAlphabet = reverseAlphabet + engAlphabet[i];
-            System.out.println(reverseAlphabet);
+            for (int j = 1; j <= charAmount - i; j++) {
+                System.out.print(engAlphabet[charAmount - j]);
+            }
+            System.out.println();
         }
+        System.out.println();
 
         System.out.println("5. Генерация уникальных чисел");
-        int[] uniqueNumbers = new int[30];
+        arrayLength = 30;
+        int[] uniqueNumbers = new int[arrayLength];
         for (int i = 0; i < uniqueNumbers.length; i++) {
             int randomNumber;
             do {
-                randomNumber = (int) (60 + Math.random()*40);
-            }
-            while (isExist(randomNumber, uniqueNumbers));
+                randomNumber = (int) (60 + Math.random() * 40);
+            } while (isExist(randomNumber, uniqueNumbers));
             uniqueNumbers[i] = randomNumber;
-        }
-        System.out.println("Массив уникальных чисел:");
-        for (int i = 0; i < uniqueNumbers.length / 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                System.out.print(uniqueNumbers[i * 10 + j] + " ");
-            }
-            System.out.println();
         }
         int[] uniqueSortNumbers = doSort(uniqueNumbers);
         System.out.println("Сортированный массив уникальных чисел:");
@@ -99,9 +94,10 @@ public class ArrayTheme {
             }
             System.out.println();
         }
+        System.out.println();
 
-        System.out.println("\nЗадание со *");
-        String[] initialStringArray =  {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        System.out.println("Задание со *");
+        String[] initialStringArray = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
         int size = 0;
         for (String s : initialStringArray) {
             if (!s.isBlank()) {
@@ -119,19 +115,21 @@ public class ArrayTheme {
             }
         }
         printStringArray(copyStringArray);
-
     }
+
     private static void printIntArray(int[] array) {
         for (int i : array) {
             System.out.print(i + " ");
         }
         System.out.println();
     }
+
     private static void printStringArray(String[] array) {
         for (String s : array) {
             System.out.print(s + " ");
         }
     }
+
     private static void printDoubleArray(double[] array) {
         for (int i = 0; i < array.length; i++) {
             System.out.printf("%.3f ", array[i]);
@@ -151,6 +149,7 @@ public class ArrayTheme {
         }
         return result;
     }
+
     private static int[] doSort(int[] arrayToSort) {
         int temp;
         for (int i = arrayToSort.length - 1; i > 0; i--) {
