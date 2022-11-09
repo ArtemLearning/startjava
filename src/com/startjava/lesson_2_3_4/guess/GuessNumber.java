@@ -14,6 +14,7 @@ public class GuessNumber {
             System.out.print("Игрок " + (i + 1) + " представьтесь, пожалуйста: ");
             players[i] = new Player(input.nextLine());
         }
+        shufflePlayers(players);
     }
 
     public void play() {
@@ -101,5 +102,16 @@ public class GuessNumber {
     private int getGuessNumber() {
         Scanner input = new Scanner(System.in);
         return input.nextInt();
+    }
+
+    private void shufflePlayers(Player[] players) {
+        int j = 0;
+        Player player;
+        for (int i = playerQuantity - 1; i >= 0; i--) {
+            player = players[j];
+            players[j] = players[(int) (Math.random() * i)];
+            players[(int) (Math.random() * i)] = player;
+            j++;
+        }
     }
 }
