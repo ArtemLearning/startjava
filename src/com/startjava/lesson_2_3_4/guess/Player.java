@@ -7,6 +7,7 @@ public class Player {
     private final String name;
     private final int[] guessNumbers = new int[arrayMaxIndex];
     private int attemptNumber = 0;
+    private int wins;
 
     public Player(String name) {
         this.name = name;
@@ -39,8 +40,15 @@ public class Player {
         attemptNumber = 0;
     }
 
+    public int getWins() {
+        return wins;
+    }
+
+    public void setWins() {
+        wins++;
+    }
+
     private boolean isInRange(int number) {
         return number > 0 && number <= 100;
     }
-
 }
