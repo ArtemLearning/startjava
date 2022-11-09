@@ -5,31 +5,28 @@ public class ArrayTheme {
     public static void main(String[] args) {
         System.out.println("1. Реверс значений массива");
         int[] intNumbers1 = {4, 6, 3, 1, 2, 7, 5};
+        int arrayLength = 7;
         System.out.println("Исходный массив:");
         printIntArray(intNumbers1);
-        for (int i = 0; i < intNumbers1.length; i++) {
-            int j = intNumbers1.length - (i + 1);
-            if (i == j) {
-                break;
-            }
+        for (int i = 0; i <  arrayLength; i++) {
+            arrayLength--;
             int swap = intNumbers1[i];
-            intNumbers1[i] = intNumbers1[j];
-            intNumbers1[j] = swap;
+            intNumbers1[i] = intNumbers1[arrayLength];
+            intNumbers1[arrayLength] = swap;
         }
         System.out.println("Изменённый массив:");
         printIntArray(intNumbers1);
-        System.out.println();
 
-        System.out.println("2. Вывод произведения элементов массива");
-        int arrayLength = 10;
+        System.out.println("\n2. Вывод произведения элементов массива");
+        arrayLength = 10;
         int[] intNumbers2 = new int[arrayLength];
         int multiDigits = 1;
         for (int i = 0; i < 10; i++) {
             intNumbers2[i] = i;
             multiDigits = (i != 0) ? (i != 9) ? (multiDigits * intNumbers2[i]) : (multiDigits) : (multiDigits);
         }
-        for (int i = 1; i < intNumbers2.length - 1; i++) {
-            if (i == intNumbers2.length - 2) {
+        for (int i = 1; i < arrayLength - 1; i++) {
+            if (i == arrayLength - 2) {
                 System.out.print(intNumbers2[i]);
             } else {
                 System.out.print(intNumbers2[i] + " * ");
@@ -37,9 +34,8 @@ public class ArrayTheme {
         }
         System.out.println(" = " + multiDigits);
         System.out.println(intNumbers2[0] + " " + intNumbers2[9]);
-        System.out.println();
 
-        System.out.println("3. Удаление элементов массива");
+        System.out.println("\n3. Удаление элементов массива");
         arrayLength = 15;
         double[] doubleNumbers = new double[arrayLength];
         for (int i = 0; i < doubleNumbers.length; i++) {
@@ -60,9 +56,8 @@ public class ArrayTheme {
         System.out.println("\nИзменённый массив:");
         printDoubleArray(doubleNumbers);
         System.out.println("\nЧисло нулей = " + nullCounter);
-        System.out.println();
 
-        System.out.println("4. Вывод элементов массива лесенкой в обратном порядке");
+        System.out.println("\n4. Вывод элементов массива лесенкой в обратном порядке");
         int charAmount = 'Z' - 'A' + 1;
         char[] engAlphabet = new char[charAmount];
         for (int i = 0; i < charAmount; i++) {
@@ -86,7 +81,7 @@ public class ArrayTheme {
             } while (isExist(randomNumber, uniqueNumbers));
             uniqueNumbers[i] = randomNumber;
         }
-        int[] uniqueSortNumbers = doSort(uniqueNumbers);
+        int[] uniqueSortNumbers = Sort(uniqueNumbers);
         System.out.println("Сортированный массив уникальных чисел:");
         for (int i = 0; i < uniqueSortNumbers.length / 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -94,45 +89,49 @@ public class ArrayTheme {
             }
             System.out.println();
         }
-        System.out.println();
 
-        System.out.println("Задание со *");
-        String[] initialStringArray = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        System.out.println("\n6. Сдвиг элементов массива");
+        arrayLength = 11;
+        String[] srcStrings = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
         int size = 0;
-        for (String s : initialStringArray) {
+        for (String s : srcStrings) {
             if (!s.isBlank()) {
-                size += 1;
+                size++;
             }
         }
-        String[] copyStringArray = new String[size];
+        System.out.println("Исходный массив строк");
+        printStringArray(srcStrings);
+        System.out.println();
+        String[] destStrings = new String[size];
         int j = 0;
-        for (int i = 0; i < initialStringArray.length; i++) {
-            if (!initialStringArray[i].isBlank()) {
-                int k = getAmountOfFilledPositions(initialStringArray, i);
-                System.arraycopy(initialStringArray, i, copyStringArray, j, k);
+        for (int i = 0; i < arrayLength; i++) {
+            if (!srcStrings[i].isBlank()) {
+                int k = getAmountOfFilledPositions(srcStrings, i);
+                System.arraycopy(srcStrings, i, destStrings, j, k);
                 j += k;
                 i += k;
             }
         }
-        printStringArray(copyStringArray);
+        System.out.println("Массив со сдвинутыми строками");
+        printStringArray(destStrings);
     }
 
-    private static void printIntArray(int[] array) {
-        for (int i : array) {
+    private static void printIntArray(int[] numbers) {
+        for (int i : numbers) {
             System.out.print(i + " ");
         }
         System.out.println();
     }
 
-    private static void printStringArray(String[] array) {
-        for (String s : array) {
+    private static void printStringArray(String[] strings) {
+        for (String s : strings) {
             System.out.print(s + " ");
         }
     }
 
-    private static void printDoubleArray(double[] array) {
-        for (int i = 0; i < array.length; i++) {
-            System.out.printf("%.3f ", array[i]);
+    private static void printDoubleArray(double[] numbers) {
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.printf("%.3f ", numbers[i]);
             if (i == 7) {
                 System.out.println();
             }
@@ -150,24 +149,24 @@ public class ArrayTheme {
         return result;
     }
 
-    private static int[] doSort(int[] arrayToSort) {
+    private static int[] Sort(int[] numbersToSort) {
         int temp;
-        for (int i = arrayToSort.length - 1; i > 0; i--) {
+        for (int i = numbersToSort.length - 1; i > 0; i--) {
             for (int j = 0; j < i; j++) {
-                if (arrayToSort[j] > arrayToSort[j + 1]) {
-                    temp = arrayToSort[j];
-                    arrayToSort[j] = arrayToSort[j + 1];
-                    arrayToSort[j + 1] = temp;
+                if (numbersToSort[j] > numbersToSort[j + 1]) {
+                    temp = numbersToSort[j];
+                    numbersToSort[j] = numbersToSort[j + 1];
+                    numbersToSort[j + 1] = temp;
                 }
             }
         }
-        return arrayToSort;
+        return numbersToSort;
     }
 
-    private static int getAmountOfFilledPositions(String[] stringArray, int index) {
+    private static int getAmountOfFilledPositions(String[] strings, int index) {
         int result = 0;
-        for (int i = index; i < stringArray.length; i++) {
-            if (stringArray[i].isBlank()) {
+        for (int i = index; i < strings.length; i++) {
+            if (strings[i].isBlank()) {
                 break;
             } else {
                 result += 1;
