@@ -3,9 +3,10 @@ package com.startjava.lesson_2_3_4.guess;
 import java.util.Arrays;
 
 public class Player {
-    private String name;
-    private int[] guessNumbers = new int[10];
-    private int attemptNumber;
+    private final int arrayMaxIndex = 10;
+    private final String name;
+    private final int[] guessNumbers = new int[arrayMaxIndex];
+    private int attemptNumber = 0;
 
     public Player(String name) {
         this.name = name;
@@ -16,20 +17,30 @@ public class Player {
     }
 
     public int[] getGuessNumbers() {
-        return guessNumbers;
+        return Arrays.copyOf(guessNumbers, attemptNumber);
     }
 
-    public void setGuessNumbers(int attemptNumber, int guessNumber) {
-        this.attemptNumber = attemptNumber;
-        guessNumbers[attemptNumber - 1] = guessNumber;
+    public boolean setGuessNumbers(int guessNumber) {
+        if (isInRange(guessNumber)) {
+            attemptNumber++;
+            guessNumbers[attemptNumber - 1] = guessNumber;
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public int getLastAttempt() {
+    public int getAttemptNumber() {
         return  attemptNumber;
     }
 
     public void initializeNumbers() {
         Arrays.fill(guessNumbers, 0);
+        attemptNumber = 0;
+    }
+
+    private boolean isInRange(int number) {
+        return number > 0 && number <= 100;
     }
 
 }
