@@ -3,11 +3,11 @@ package com.startjava.lesson_2_3_4.guess;
 import java.util.Scanner;
 
 public class GuessNumberTest {
-    private static Player player1;
-    private static Player player2;
-    private static Player player3;
 
     public static void main(String[] args) {
+        Player player1 = new Player();
+        Player player2 = new Player();
+        Player player3 = new Player();
         GuessNumber game = new GuessNumber(player1, player2, player3);
         int rounds = 0;
         do {
@@ -16,7 +16,7 @@ public class GuessNumberTest {
             if (rounds == 3) {
                 game.winner();
             }
-        } while(isNotFinished());
+        } while (isNotFinished());
     }
 
     private static boolean isNotFinished() {

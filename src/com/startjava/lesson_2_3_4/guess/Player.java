@@ -1,6 +1,7 @@
 package com.startjava.lesson_2_3_4.guess;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Player {
     private final int arrayMaxIndex = 10;
@@ -9,8 +10,10 @@ public class Player {
     private int attemptNumber = 0;
     private int wins;
 
-    public Player(String name) {
-        this.name = name;
+    public Player() {
+        System.out.print("Представьтесь, пожалуйста: ");
+        Scanner input = new Scanner(System.in);
+        name = input.nextLine();
     }
 
     public String getName() {
@@ -32,12 +35,7 @@ public class Player {
     }
 
     public int getAttemptNumber() {
-        return  attemptNumber;
-    }
-
-    public void initializeNumbers() {
-        Arrays.fill(guessNumbers, 0);
-        attemptNumber = 0;
+        return attemptNumber;
     }
 
     public int getWins() {
@@ -46,6 +44,11 @@ public class Player {
 
     public void setWins() {
         wins++;
+    }
+
+    public void initializeNumbers() {
+        Arrays.fill(guessNumbers, 0);
+        attemptNumber = 0;
     }
 
     private boolean isInRange(int number) {
