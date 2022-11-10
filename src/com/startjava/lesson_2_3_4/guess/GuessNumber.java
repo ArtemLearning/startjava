@@ -3,10 +3,10 @@ package com.startjava.lesson_2_3_4.guess;
 import java.util.Scanner;
 
 public class GuessNumber {
-    private int guessNumber;
     private final int playerQuantity = 3;
     private final int numberOfAttempts = 10;
     private final Player[] players; // = new Player[playerQuantity];
+    private int guessNumber;
 
     public GuessNumber(Player... players) {
         this.players = players;
@@ -20,6 +20,12 @@ public class GuessNumber {
         for (int i = 0; i < playerQuantity; i++) {
             System.out.println(players[i].getName());
         }
+    }
+
+    private static void swap(Player[] players, int i, int j) {
+        Player tempPlayer = players[i];
+        players[i] = players[j];
+        players[j] = tempPlayer;
     }
 
     public void play() {
@@ -101,7 +107,7 @@ public class GuessNumber {
         }
     }
 
-    private char compareNumbers(int number){
+    private char compareNumbers(int number) {
         return number > guessNumber ? '>' : number < guessNumber ? '<' : '=';
     }
 
@@ -116,38 +122,21 @@ public class GuessNumber {
             swap(players, i, j);
         }
     }
-    private static void swap(Player[] players, int i, int j) {
-        Player tempPlayer = players[i];
-        players[i] = players[j];
-        players[j] = tempPlayer;
-    }
 
     public void winner() {
+        boolean draw = true;
         Player winner = players[0];
-        int draw = 3;
         for (int i = 1; i < playerQuantity; i++) {
-            if (players[i].getWins() != winner.getWins()) {
-                draw -= i;
-                if (players[i].getWins() > winner.getWins()) {
-                    winner = players[i];
-                }
+            if (players[i].getWins() > winner.getWins()) {
+                winner = players[i];
+                draw = false;
             }
         }
-        switch (draw) {
-            case 3 -> {
-                System.out.println("Победила дружба");
-            }
-            case 2 -> {
-                System.out.println("Победили игроки " + players[1].getName() + " и " + players[2].getName() +
-                        " c " + winner.getWins() + " победами");
-            }
-            case 1 -> {
-                System.out.println("Победили игроки " + players[0].getName() + " и " + players[1].getName() +
-                        " c " + winner.getWins() + " победами");
-            }
-            default -> {
-                System.out.println("Победил игрок " + winner.getName() + " c " + winner.getWins() + " победами");
-            }
+        if (draw) {
+            System.out.println("\nПобедила дружба");
+        } else {
+            System.out.println("\nПобедил игрок " + winner.getName());
         }
+
     }
 }
