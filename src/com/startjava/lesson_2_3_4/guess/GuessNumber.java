@@ -124,19 +124,30 @@ public class GuessNumber {
 
     public void winner() {
         Player winner = players[0];
-        boolean draw = true;
+        int draw = 3;
         for (int i = 1; i < playerQuantity; i++) {
-            if (players[i].getWins() > winner.getWins()) {
-                winner = players[i];
-            }
             if (players[i].getWins() != winner.getWins()) {
-                draw = false;
+                draw -= i;
+                if (players[i].getWins() > winner.getWins()) {
+                    winner = players[i];
+                }
             }
         }
-        if (draw) {
-            System.out.println("Победила дружба");
-        } else {
-            System.out.println("Победил игрок " + winner.getName() + " c " + winner.getWins() + " победами");
+        switch (draw) {
+            case 3 -> {
+                System.out.println("Победила дружба");
+            }
+            case 2 -> {
+                System.out.println("Победили игроки " + players[1].getName() + " и " + players[2].getName() +
+                        " c " + winner.getWins() + " победами");
+            }
+            case 1 -> {
+                System.out.println("Победили игроки " + players[0].getName() + " и " + players[1].getName() +
+                        " c " + winner.getWins() + " победами");
+            }
+            default -> {
+                System.out.println("Победил игрок " + winner.getName() + " c " + winner.getWins() + " победами");
+            }
         }
     }
 }
