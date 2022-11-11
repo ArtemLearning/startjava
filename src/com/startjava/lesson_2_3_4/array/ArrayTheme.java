@@ -1,5 +1,7 @@
 package com.startjava.lesson_2_3_4.array;
 
+import org.w3c.dom.ls.LSOutput;
+
 public class ArrayTheme {
 
     public static void main(String[] args) {
@@ -19,21 +21,17 @@ public class ArrayTheme {
 
         System.out.println("\n2. Вывод произведения элементов массива");
         length = 10;
+        String str = "";
         int[] intNumbers2 = new int[length];
         int multDigits = 1;
         for (int i = 0; i < length; i++) {
             intNumbers2[i] = i;
         }
         for (int i = 1; i < length - 1; i++) {
-            multDigits = multDigits * intNumbers2[i];
-            if (i == length - 2) {
-                System.out.print(intNumbers2[i]);
-            } else {
-                System.out.print(intNumbers2[i] + " * ");
-            }
+            multDigits *= intNumbers2[i];
+            System.out.print((i == (length - 2) ?  intNumbers2[i] + " = " + multDigits : str + intNumbers2[i] + " * "));
         }
-        System.out.println(" = " + multDigits);
-        System.out.println(intNumbers2[0] + " " + intNumbers2[9]);
+        System.out.println("\n" + intNumbers2[0] + " " + intNumbers2[9]);
 
         System.out.println("\n3. Удаление элементов массива");
         length = 15;
