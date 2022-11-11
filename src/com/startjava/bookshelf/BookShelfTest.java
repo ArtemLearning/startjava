@@ -8,6 +8,7 @@ public class BookShelfTest {
     public static void main(String[] args) {
         int menuItem = 0;
         while (menuItem != 4) {
+            myShelf.showBooks();
             showMenu();
             menuItem = getMenuItem();
             switch (menuItem) {
@@ -15,7 +16,7 @@ public class BookShelfTest {
                     myShelf.addBook();
                 }
                 case 2 -> {
-                    myShelf.deleteBook(getBookToDelete());
+                    myShelf.deleteBook(getBookNumberToDelete() - 1);
                 }
                 case 3 -> {
                     myShelf.clearShelf();
@@ -44,12 +45,8 @@ public class BookShelfTest {
         return input.nextInt();
     }
 
-    private static Book getBookToDelete() {
+    private static int getBookNumberToDelete() {
         System.out.println("Укажите номер книги для удаления:");
-        return getBookByNumber(getInt());
-    }
-
-    private static Book getBookByNumber(int bookNumber) {
-        return myShelf.getBookByNumber(bookNumber);
+        return getInt();
     }
 }

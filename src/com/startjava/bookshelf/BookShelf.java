@@ -1,23 +1,33 @@
 package com.startjava.bookshelf;
 
-import java.util.ArrayList;
-
 public class BookShelf {
 
     int maxBooks = 10;
     Book[] books = new Book[maxBooks];
     private int quantityOfBooks = 0;
 
-    public BookShelf() {
+    private int length;
+
+    public void showBooks() {
+        if (quantityOfBooks == 0) {
+            System.out.println("Книжный шкаф пуст");
+        } else {
+            for (int i = 0; i < quantityOfBooks; i++) {
+                books[i].showBook();
+            }
+        }
     }
 
     public void addBook() {
-        books[quantityOfBooks] = new Book(quantityOfBooks + 1);
+        books[quantityOfBooks] = new Book(quantityOfBooks);
+        if (length < books[quantityOfBooks].getInformationLength()) {
+            length = books[quantityOfBooks].getInformationLength();
+        }
         quantityOfBooks++;
     }
 
-    public void deleteBook(Book bookToDelete) {
-        books[quantityOfBooks] = null;
+    public void deleteBook(int bookNumber) {
+        System.arraycopy(books, bookNumber + 1, books, bookNumber, quantityOfBooks - bookNumber);
         quantityOfBooks--;
     }
 
@@ -35,14 +45,16 @@ public class BookShelf {
     }
 
     public int getBooksQuantity() {
-        return books.length;
+        return quantityOfBooks;
     }
 
     public int getFreePlace() {
-        return 10 - quantityOfBooks;
+        return maxBooks - quantityOfBooks;
     }
     public void clearShelf() {
-        books.????????????????();
+        books = null;
+        quantityOfBooks = 0;
+        length = 0;
     }
 
     public Book getBookByNumber(int number) {
