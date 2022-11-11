@@ -4,20 +4,20 @@ import java.util.ArrayList;
 
 public class BookShelf {
 
-    ArrayList<Book> books = new ArrayList<>();
-    private int quantityOfBooks = 1;
+    int maxBooks = 10;
+    Book[] books = new Book[maxBooks];
+    private int quantityOfBooks = 0;
 
     public BookShelf() {
     }
 
     public void addBook() {
-        Book newBook = new Book(quantityOfBooks);
-        books.add(newBook);
+        books[quantityOfBooks] = new Book(quantityOfBooks + 1);
         quantityOfBooks++;
     }
 
     public void deleteBook(Book bookToDelete) {
-        books.remove(bookToDelete.getBookNumber() - 1);
+        books[quantityOfBooks] = null;
         quantityOfBooks--;
     }
 
@@ -27,25 +27,25 @@ public class BookShelf {
                 return book;
             }
         }
-        return books.get(0);
+        return books[0];
     }
 
-    public ArrayList<Book> getAllBooks() {
+    public Book[] getAllBooks() {
         return books;
     }
 
     public int getBooksQuantity() {
-        return books.size();
+        return books.length;
     }
 
     public int getFreePlace() {
-        return 10 - books.size();
+        return 10 - quantityOfBooks;
     }
     public void clearShelf() {
-        books.clear();
+        books.????????????????();
     }
 
     public Book getBookByNumber(int number) {
-        return books.get(number - 1);
+        return books[number - 1];
     }
 }
