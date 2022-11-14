@@ -1,5 +1,6 @@
-package com.startjava.bookshelf;
+package com.startjava.graduation.bookshelf;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BookShelfTest {
@@ -10,20 +11,12 @@ public class BookShelfTest {
         while (menuItem != 4) {
             myShelf.showBooks();
             showMenu();
-            menuItem = getMenuItem();
+            menuItem = getInt();
             switch (menuItem) {
-                case 1 -> {
-                    myShelf.addBook();
-                }
-                case 2 -> {
-                    myShelf.deleteBook(getBookNumberToDelete() - 1);
-                }
-                case 3 -> {
-                    myShelf.clearShelf();
-                }
-                default -> {
-                    System.out.println("Выход из программы");
-                }
+                case 1 -> myShelf.addBook();
+                case 2 -> myShelf.deleteBook(getBookNumberToDelete() - 1);
+                case 3 -> myShelf.clearShelf();
+                default -> System.out.println("Выход из программы");
             }
         }
     }
@@ -36,13 +29,14 @@ public class BookShelfTest {
         System.out.println("4. Завершить работу");
     }
 
-    private static int getMenuItem() {
-        return getInt();
-    }
-
-    public static int getInt() {
+    private static int getInt() {
         Scanner input = new Scanner(System.in);
-        return input.nextInt();
+        try {
+            return input.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Введите число от 1 до 4");
+            return getInt();
+        }
     }
 
     private static int getBookNumberToDelete() {
