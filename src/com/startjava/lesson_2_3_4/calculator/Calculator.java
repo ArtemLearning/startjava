@@ -32,7 +32,6 @@ public class Calculator {
                 return 0f;
             }
         }
-
     }
 
     private static void parseExpression(String expression) {
@@ -47,32 +46,26 @@ public class Calculator {
     }
 
     private static int getOperand(String operand) {
-        if (isValid(operand)) {
-            return Integer.parseInt(operand);
+        while (!isValid(operand)) {
+            System.out.println("Число " + operand + " некорректно. Введите целое число в интервале (0, 100]");
+            operand = getValidOperand();
         }
-        return 0;
+        return Integer.parseInt(operand);
     }
 
     private static boolean isValid(String operand) {
         try {
             int number = Integer.parseInt(operand);
-            if (number <= 0) {
-                do {
-                    System.out.println("Число " + operand + " меньше нуля.");
-                }
-                while (!isValid(getOperand()));
+            if (number <= 0 || number > 100) {
+                return false;
             }
         } catch (NumberFormatException e) {
-            do {
-                System.out.println("Число " + operand + " не целое.");
-            }
-            while (!isValid(getOperand()));
+            return false;
         }
         return true;
     }
 
-    private static String getOperand() {
-        System.out.print("Введите корректное число :");
+    private static String getValidOperand() {
         Scanner input = new Scanner(System.in);
         return input.nextLine();
     }
