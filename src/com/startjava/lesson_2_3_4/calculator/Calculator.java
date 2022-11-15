@@ -7,48 +7,31 @@ public class Calculator {
 
     public static float calculate(String expression) {
         parseExpression(expression);
-        switch (operation) {
-            case '+' -> {
-                return (float) Math.addExact(firstOperand, secondOperand);
-            }
-            case '-' -> {
-                return (float) Math.subtractExact(firstOperand, secondOperand);
-            }
-            case '*' -> {
-                return (float) Math.multiplyExact(firstOperand, secondOperand);
-            }
-            case '/' -> {
-                return (float) Math.divideExact(firstOperand,secondOperand);
-            }
-            case '^' -> {
-                return (float) Math.pow(firstOperand, secondOperand);
-            }
-            case '%' -> {
-                return firstOperand % secondOperand;
-            }
-            default -> {
-                return 0f;
-            }
-        }
+        return switch (operation) {
+            case '+' -> (float) Math.addExact(firstOperand, secondOperand);
+            case '-' -> (float) Math.subtractExact(firstOperand, secondOperand);
+            case '*' -> (float) Math.multiplyExact(firstOperand, secondOperand);
+            case '/' -> (float) Math.divideExact(firstOperand, secondOperand);
+            case '^' -> (float) Math.pow(firstOperand, secondOperand);
+            case '%' -> firstOperand % secondOperand;
+            default -> 0f;
+        };
     }
 
-    private static void parseExpression(String expression) throws RuntimeException {
+    private static void parseExpression(String expression) {
         String[] partsExpression = expression.split(" ");
         if (partsExpression.length != 3) {
-            RuntimeException mistake = new RuntimeException("Строка введена некорректно. " +
-                    "Разделяйте числа и операцию пробелами");
-            throw new RuntimeException(mistake);
+            throw new RuntimeException("Строка введена некорректно. " + "Разделяйте числа и операцию пробелами");
         }
         firstOperand = validOperand(partsExpression[0]);
         secondOperand = validOperand(partsExpression[2]);
         operation = validOperation(partsExpression[1]);
     }
 
-    private static int validOperand(String operand) throws RuntimeException {
+    private static int validOperand(String operand) {
         if (!isValid(operand)) {
             String str = "Число " + operand + " некорректно. Введите целое число в интервале (0, 100]";
-            RuntimeException mistake = new RuntimeException(str);
-            throw new RuntimeException(mistake);
+            throw new RuntimeException(str);
         }
         return Integer.parseInt(operand);
     }
@@ -65,13 +48,12 @@ public class Calculator {
         return true;
     }
 
-    private static char validOperation(String expression) throws RuntimeException {
+    private static char validOperation(String expression) {
         char operation = expression.charAt(0);
         if (!(operation == '+' || operation == '-' || operation == '*' || operation == '/'
                 || operation == '^' || operation == '%')) {
             String str = "Операция " + operation + " некорректнa.";
-            RuntimeException mistake = new RuntimeException(str);
-            throw new RuntimeException(mistake);
+            throw new RuntimeException(str);
         }
         return operation;
     }
