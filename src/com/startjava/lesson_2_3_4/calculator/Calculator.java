@@ -1,10 +1,8 @@
 package com.startjava.lesson_2_3_4.calculator;
 
-import java.util.Scanner;
-
 public class Calculator {
-    private static int firstOperand;
-    private static int secondOperand;
+    private static long firstOperand;
+    private static long secondOperand;
     private static char operation;
 
     public static float calculate(String expression) {
@@ -20,7 +18,7 @@ public class Calculator {
                 return (float) Math.multiplyExact(firstOperand, secondOperand);
             }
             case '/' -> {
-                return (float) Math.divideExact(firstOperand, secondOperand);
+                return (float) Math.divideExact(firstOperand,secondOperand);
             }
             case '^' -> {
                 return (float) Math.pow(firstOperand, secondOperand);
@@ -34,21 +32,23 @@ public class Calculator {
         }
     }
 
-    private static void parseExpression(String expression) {
+    private static void parseExpression(String expression) throws RuntimeException {
         String[] partsExpression = expression.split(" ");
-        while (partsExpression.length != 3) {
-            System.out.println("Строка введена некорректно. Разделяйте числа и операцию пробелами");
-            partsExpression = getNewExpression();
+        if (partsExpression.length != 3) {
+            RuntimeException mistake = new RuntimeException("Строка введена некорректно. " +
+                    "Разделяйте числа и операцию пробелами");
+            throw new RuntimeException(mistake);
         }
-        firstOperand = getOperand(partsExpression[0]);
-        secondOperand = getOperand(partsExpression[2]);
-        operation = partsExpression[1].charAt(0);
+        firstOperand = validOperand(partsExpression[0]);
+        secondOperand = validOperand(partsExpression[2]);
+        operation = validOperation(partsExpression[1]);
     }
 
-    private static int getOperand(String operand) {
-        while (!isValid(operand)) {
-            System.out.println("Число " + operand + " некорректно. Введите целое число в интервале (0, 100]");
-            operand = getValidOperand();
+    private static int validOperand(String operand) throws RuntimeException {
+        if (!isValid(operand)) {
+            String str = "Число " + operand + " некорректно. Введите целое число в интервале (0, 100]";
+            RuntimeException mistake = new RuntimeException(str);
+            throw new RuntimeException(mistake);
         }
         return Integer.parseInt(operand);
     }
@@ -65,14 +65,14 @@ public class Calculator {
         return true;
     }
 
-    private static String getValidOperand() {
-        Scanner input = new Scanner(System.in);
-        return input.nextLine();
-    }
-
-    private static String[] getNewExpression() {
-        System.out.println("Введите математическое выражение");
-        Scanner input = new Scanner(System.in);
-        return input.nextLine().split(" ");
+    private static char validOperation(String expression) throws RuntimeException {
+        char operation = expression.charAt(0);
+        if (!(operation == '+' || operation == '-' || operation == '*' || operation == '/'
+                || operation == '^' || operation == '%')) {
+            String str = "Операция " + operation + " некорректнa.";
+            RuntimeException mistake = new RuntimeException(str);
+            throw new RuntimeException(mistake);
+        }
+        return operation;
     }
 }
