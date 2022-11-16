@@ -30,8 +30,7 @@ public class Calculator {
 
     private static int validOperand(String operand) {
         if (!isValid(operand)) {
-            String str = "Число " + operand + " некорректно. Введите целое число в интервале (0, 100]";
-            throw new RuntimeException(str);
+            throw new RuntimeException("Число " + operand + " некорректно. Введите целое число в интервале (0, 100]");
         }
         return Integer.parseInt(operand);
     }
@@ -52,8 +51,7 @@ public class Calculator {
         char operation = expression.charAt(0);
         if (!(operation == '+' || operation == '-' || operation == '*' || operation == '/'
                 || operation == '^' || operation == '%')) {
-            String str = "Операция " + operation + " некорректнa.";
-            throw new RuntimeException(str);
+            throw new RuntimeException("Операция " + operation + " некорректнa.");
         }
         return operation;
     }
