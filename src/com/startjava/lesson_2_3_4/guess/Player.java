@@ -1,19 +1,16 @@
 package com.startjava.lesson_2_3_4.guess;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Player {
-    private final int arrayMaxIndex = 10;
+    private final int ARRAY_MAX_INDEX = 10;
     private final String name;
-    private final int[] guessNumbers = new int[arrayMaxIndex];
+    private final int[] guessNumbers = new int[ARRAY_MAX_INDEX];
     private int attemptNumber = 0;
     private int wins;
 
-    public Player() {
-        System.out.print("Представьтесь, пожалуйста: ");
-        Scanner input = new Scanner(System.in);
-        name = input.nextLine();
+    public Player(String name) {
+        this.name = name;
     }
 
     public String getName() {
@@ -29,25 +26,24 @@ public class Player {
             attemptNumber++;
             guessNumbers[attemptNumber - 1] = guessNumber;
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     public int getAttemptNumber() {
         return attemptNumber;
     }
 
-    public int getWins() {
+    public int getWinsQuantity() {
         return wins;
     }
 
-    public void setWins() {
+    public void incrementWinsQuantity() {
         wins++;
     }
 
-    public void initializeNumbers() {
-        Arrays.fill(guessNumbers, 0);
+    public void clearAttempts() {
+        Arrays.fill(guessNumbers, 0, attemptNumber - 1, 0);
         attemptNumber = 0;
     }
 
