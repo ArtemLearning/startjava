@@ -16,7 +16,6 @@ public class GuessNumberTest {
         do {
             game.play();
         } while (isNext());
-
     }
 
     private static boolean isNext() {
