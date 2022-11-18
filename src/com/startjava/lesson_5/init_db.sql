@@ -9,4 +9,4 @@ VALUES
 ('Saber Athena',    'Mark-7', 76.91, 1.628, 'Active'   , 'Japan',       '20331220', 1 ),
 ('Titan Redeemer',  'Mark-6', 83.44, 2.097, 'Active'   , 'France',      '20281104', 2 ),
 ('Atlas Destroyer', 'Mark-3', 85.53, 1.845, 'Destroyed', 'UK',          '20160308', 8 );
-('Titan Redeemer',  'Mark-6', 76.20, 3.783, 'Destroyed', 'Brasil',      '20320712', 1 );
+('Titan Redeemer',  'Mark-6', 76.20, 3.783, 'Destroyed', 'Brazil',      '20320712', 1 );
