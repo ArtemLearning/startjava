@@ -1,12 +1,12 @@
 CREATE DATABASE jaegers;
-
-CREATE TABLE jaegers (  id         serial primary key,
-                        modelName  text,
-                        mark       char(7),
-                        height     integer,
-                        weight     integer,
-                        status     char(10),
-                        origin     char(20),
-                        launch     dats,
-                        kaijuKill  integer
+\c jaegers;
+CREATE TABLE Jaegers (  id         SERIAL PRIMARY KEY,
+                        modelName  TEXT,
+                        mark       CHAR(6),
+                        height     NUMERIC(4, 2),
+                        weight     NUMERIC(4, 3),
+                        status     CHAR(10),
+                        origin     CHAR(10),
+                        launch     DATE,
+                        kaijuKill  INTEGER
                      );
