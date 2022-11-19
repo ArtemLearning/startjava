@@ -4,8 +4,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GuessNumber {
-    private final int NUMBER_OF_ROUNDS = 3;
-    private final int NUMBER_OF_ATTEMPTS = 10;
+    private final int ROUNDS_LIMIT = 3;
+    private final int ATTEMPTS_LIMIT = 10;
     private final Player[] players;
     private int guessNumber;
     private int rounds;
@@ -30,11 +30,11 @@ public class GuessNumber {
 
     public void play() {
         init();
-        for (int i = 1; i <= NUMBER_OF_ATTEMPTS; i++) {
+        for (int i = 1; i <= ATTEMPTS_LIMIT; i++) {
             if (playFinished()) {
                 rounds++;
-                if (rounds == NUMBER_OF_ROUNDS) {
-                    winner();
+                if (rounds == ROUNDS_LIMIT) {
+                    decide();
                 }
                 break;
             }
@@ -42,16 +42,14 @@ public class GuessNumber {
     }
 
     private void init() {
-        if (rounds == NUMBER_OF_ROUNDS) {
+        if (rounds == ROUNDS_LIMIT) {
             rounds = 0;
         }
         guessNumber = 1 + (int) (Math.random() * 100);
         System.out.println("Число загадано, начинаем игру");
-        System.out.println("У каждого игрока по " + NUMBER_OF_ATTEMPTS + "  попыток");
+        System.out.println("У каждого игрока по " + ATTEMPTS_LIMIT + "  попыток");
         for (Player player : players) {
-            if (player.getAttemptNumber() > 0) {
-                player.clearAttempts();
-            }
+            player.clearAttempts();
         }
     }
 
@@ -66,15 +64,15 @@ public class GuessNumber {
 
     private boolean isCorrect(Player player) {
         System.out.print(player.getName() + ", введите ваше число: ");
-        if (isGuessed(player)) {
+        if (compareNumbers(player)) {
             printPlayerAttempts(player);
             return true;
-        } else {
+        } {
             return false;
         }
     }
 
-    private boolean isGuessed(Player player) {
+    private boolean compareNumbers(Player player) {
         int number = inputNumber();
         while (!player.addGuessNumber(number)) {
             System.out.println("Число " + number + " вне угадываемого диапазона. Введите корректное число");
@@ -86,8 +84,7 @@ public class GuessNumber {
             System.out.println(" равно задуманному. Вы угадали с " + player.getAttemptNumber() + " попытки");
             player.incrementWinsQuantity();
             return true;
-        }
-        {
+        } {
             if (number > guessNumber) {
                 System.out.println(" больше задуманного");
             } else {
@@ -109,7 +106,7 @@ public class GuessNumber {
     }
 
     private void endOfAttempts(Player player) {
-        if (player.getAttemptNumber() == NUMBER_OF_ATTEMPTS) {
+        if (player.getAttemptNumber() == ATTEMPTS_LIMIT) {
             System.out.println("У " + player.getName() + " закончились попытки");
         }
     }
@@ -117,15 +114,12 @@ public class GuessNumber {
     private void printPlayerAttempts(Player player) {
         System.out.println("Попытки игрока " + player.getName());
         int[] playerNumbers = player.getGuessNumbers();
-        for (int i = 0; i < player.getAttemptNumber(); i++) {
-            System.out.print(playerNumbers[i] + " ");
-            if (i == 4) {
-                System.out.println();
-            }
+        for (int number : playerNumbers) {
+            System.out.print(playerNumbers[number] + " ");
         }
     }
 
-    private void winner() {
+    private void decide() {
         boolean draw = true;
         Player winner = players[0];
         for (int i = 1; i < players.length; i++) {
