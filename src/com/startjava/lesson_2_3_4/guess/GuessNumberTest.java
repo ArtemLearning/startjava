@@ -18,7 +18,7 @@ public class GuessNumberTest {
         } while (isNext());
     }
 
-        private static boolean isNext() {
+    private static boolean isNext() {
         String answer = " ";
         Scanner input = new Scanner(System.in);
         while (!answer.equals("yes") && !answer.equals("no")) {

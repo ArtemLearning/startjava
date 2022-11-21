@@ -68,9 +68,8 @@ public class GuessNumber {
         if (compareNumbers(player, number)) {
             printPlayerAttempts(player);
             return true;
-        } {
-            return false;
         }
+        return false;
     }
 
     private boolean compareNumbers(Player player, int number) {
@@ -79,14 +78,13 @@ public class GuessNumber {
             System.out.println(" равно задуманному. Вы угадали с " + player.getAttemptNumber() + " попытки");
             player.incrementWinsQuantity();
             return true;
-        } {
-            if (number > guessNumber) {
-                System.out.println(" больше задуманного");
-            } else {
-                System.out.println(" меньше задуманного");
-            }
-            return false;
         }
+        if (number > guessNumber) {
+            System.out.println(" больше задуманного");
+        } else {
+            System.out.println(" меньше задуманного");
+        }
+        return false;
     }
 
     private int inputNumber() {
@@ -102,9 +100,9 @@ public class GuessNumber {
 
     private void printPlayerAttempts(Player player) {
         System.out.println("Попытки игрока " + player.getName());
-        int[] playerNumbers = player.getGuessNumbers();
-        for (int playerNumber : playerNumbers) {
-            System.out.print(playerNumber + " ");
+        int[] numbers = player.getGuessNumbers();
+        for (int number : numbers) {
+            System.out.print(number + " ");
         }
     }
 
