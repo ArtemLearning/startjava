@@ -20,15 +20,7 @@ public class Book {
         setPublishYear(input.nextLine());
     }
 
-    public int getInformationLength() {
-        return informationLength;
-    }
-
-    public void setInformationLength(String description) {
-        informationLength = description.length();
-    }
-
-    public void setPublishYear(String year) {
+    private void setPublishYear(String year) {
         try {
             publishYear = Year.parse(year);
         } catch (DateTimeParseException e) {
@@ -39,13 +31,21 @@ public class Book {
         }
     }
 
-    public String toString() {
-        return author + ", " + name + ", " + publishYear;
-    }
-
     private void getValidYear() {
         System.out.println("Введён неправильный год издания. Введите корректный год.");
         Scanner input = new Scanner(System.in);
         setPublishYear(input.nextLine());
+    }
+
+    public int getInformationLength() {
+        return informationLength;
+    }
+
+    public void setInformationLength(String description) {
+        informationLength = description.length();
+    }
+
+    public String toString() {
+        return author + ", " + name + ", " + publishYear;
     }
 }

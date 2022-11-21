@@ -11,10 +11,10 @@ public class BookShelfTest {
         while (menuItem != 4) {
             myShelf.showBooks();
             showMenu();
-            menuItem = getInt();
+            menuItem = getAction();
             switch (menuItem) {
-                case 1 -> myShelf.addBook();
-                case 2 -> myShelf.deleteBook(getBookNumberToDelete() - 1);
+                case 1 -> myShelf.add();
+                case 2 -> myShelf.delete(getBookNumberToDelete() - 1);
                 case 3 -> myShelf.clearShelf();
                 default -> System.out.println("Выход из программы");
             }
@@ -29,18 +29,18 @@ public class BookShelfTest {
         System.out.println("4. Завершить работу");
     }
 
-    private static int getInt() {
+    private static int getAction() {
         Scanner input = new Scanner(System.in);
         try {
             return input.nextInt();
         } catch (InputMismatchException e) {
             System.out.println("Введите число от 1 до 4");
-            return getInt();
+            return getAction();
         }
     }
 
     private static int getBookNumberToDelete() {
         System.out.println("Укажите номер книги для удаления:");
-        return getInt();
+        return getAction();
     }
 }
