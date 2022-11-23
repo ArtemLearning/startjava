@@ -1,5 +1,7 @@
 package com.startjava.graduation.bookshelf;
 
+import java.util.Arrays;
+
 public class BookShelf {
 
     private static final int MAX_SPACE = 10;
@@ -7,33 +9,11 @@ public class BookShelf {
     private int quantityOfBooks = 0;
     private int maxLength;
 
-    public void showBooks() {
-        if (quantityOfBooks > 0) {
-            for (int i = 0; i < quantityOfBooks; i++) {
-                show(books[i]);
-            }
+    public Book[] getBooks() {
+        if (books != null) {
+            return Arrays.copyOf(books, quantityOfBooks);
         }
-    }
-
-    private void show(Book bookToShow) {
-        System.out.println(printSingleString(bookToShow.toString()));
-        System.out.println(printUnderscores());
-    }
-
-    private String printSingleString(String str) {
-        str = "|" + str;
-        for (int i = str.length(); i <= maxLength; i++) {
-            str = str + " ";
-        }
-        return str + "|";
-    }
-
-    private String printUnderscores() {
-        String str = "|";
-        for (int i = 1; i <= maxLength; i++) {
-            str = str + "_";
-        }
-        return str + "|";
+        return null;
     }
 
     public void add(Book bookToAdd) {
@@ -47,10 +27,10 @@ public class BookShelf {
     public void delete(int bookNumber) {
         System.arraycopy(books, bookNumber + 1, books, bookNumber, quantityOfBooks - bookNumber);
         quantityOfBooks--;
-        getMaximumLength(books);
+        setMaximumLength(books);
     }
 
-    private void getMaximumLength(Book[] books) {
+    private void setMaximumLength(Book[] books) {
         maxLength = 0;
         for (int i = 0; i < quantityOfBooks; i++) {
             if (books[i].getInformationLength() > maxLength) {
@@ -71,6 +51,10 @@ public class BookShelf {
 
     public int getFreeSpace() {
         return MAX_SPACE - getQuantityOfBooks();
+    }
+
+    public int getMaxLength() {
+        return maxLength;
     }
 
 }

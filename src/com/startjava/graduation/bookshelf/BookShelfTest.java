@@ -11,7 +11,7 @@ public class BookShelfTest {
     public static void main(String[] args) {
         int menuItem = 0;
         while (menuItem != 4) {
-            myShelf.showBooks();
+            showBooks(myShelf.getBooks());
             showMenu();
             menuItem = getAction();
             switch (menuItem) {
@@ -21,6 +21,35 @@ public class BookShelfTest {
                 default -> System.out.println("Выход из программы");
             }
         }
+    }
+
+    private static void showBooks(Book[] books) {
+        if (books != null) {
+            for (Book book : books) {
+                show(book);
+            }
+        }
+    }
+
+    private static void show(Book bookToShow) {
+        System.out.println(printSingleString(bookToShow.toString()));
+        System.out.println(printUnderscores());
+    }
+
+    private static String printSingleString(String str) {
+        str = "|" + str;
+        for (int i = str.length(); i <= myShelf.getMaxLength(); i++) {
+            str = str + " ";
+        }
+        return str + "|";
+    }
+
+    private static String printUnderscores() {
+        String str = "|";
+        for (int i = 1; i <= myShelf.getMaxLength(); i++) {
+            str = str + "_";
+        }
+        return str + "|";
     }
 
     private static void showMenu() {
@@ -55,22 +84,20 @@ public class BookShelfTest {
     }
 
     private static Year setPublishYear(String year) {
-        Year publishYear = Year.now();
         try {
-            publishYear = Year.parse(year);
-            if (publishYear.isAfter(Year.now())) {
-                getValidYear();
+            if (Year.parse(year).isAfter(Year.now())) {
+                return getCorrectYear();
             }
+            return Year.parse(year);
         } catch (DateTimeParseException e) {
-            getValidYear();
+            return getCorrectYear();
         }
-        return publishYear;
     }
 
-    private static void getValidYear() {
+    private static Year getCorrectYear() {
         System.out.println("Введён неправильный год издания. Введите корректный год.");
         Scanner input = new Scanner(System.in);
-        setPublishYear(input.nextLine());
+        return setPublishYear(input.nextLine());
     }
 
     private static int getBookNumberToDelete() {
