@@ -1,6 +1,7 @@
 package com.startjava.graduation.bookshelf;
 
 import java.util.Arrays;
+import java.util.concurrent.ForkJoinPool;
 
 public class BookShelf {
 
@@ -27,7 +28,11 @@ public class BookShelf {
     }
 
     public void delete(int bookNumber) {
-        System.arraycopy(books, bookNumber + 1, books, bookNumber, quantityOfBooks - bookNumber);
+        Book[] changeBooks = new Book[books.length - 1];
+        System.arraycopy(books, 0, changeBooks, 0, bookNumber);
+        int fromIndex = books.length - (bookNumber + 1);
+        System.arraycopy(books, bookNumber + 1, changeBooks, bookNumber, fromIndex);
+        System.arraycopy(changeBooks, 0, books, 0, changeBooks.length);
         quantityOfBooks--;
         setMaximumLength(books);
     }
@@ -42,7 +47,7 @@ public class BookShelf {
     }
 
     public void clearShelf() {
-        books = null;
+        books = new Book[MAX_SPACE];
         quantityOfBooks = 0;
         maxLength = 0;
     }
