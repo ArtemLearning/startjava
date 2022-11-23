@@ -8,9 +8,7 @@ public class BookShelf {
     private int maxLength;
 
     public void showBooks() {
-        if (quantityOfBooks == 0) {
-            System.out.println("Книжный шкаф пуст");
-        } else {
+        if (quantityOfBooks > 0) {
             for (int i = 0; i < quantityOfBooks; i++) {
                 show(books[i]);
             }
@@ -24,7 +22,7 @@ public class BookShelf {
 
     private String printSingleString(String str) {
         str = "|" + str;
-        for (int i = str.length(); i < (maxLength - 1); i++) {
+        for (int i = str.length(); i <= maxLength; i++) {
             str = str + " ";
         }
         return str + "|";
@@ -32,15 +30,14 @@ public class BookShelf {
 
     private String printUnderscores() {
         String str = "|";
-        for (int i = 1; i < (maxLength - 1); i++) {
+        for (int i = 1; i <= maxLength; i++) {
             str = str + "_";
         }
         return str + "|";
     }
 
-    public void add() {
-        books[quantityOfBooks] = new Book();
-        books[quantityOfBooks].setInformationLength(printSingleString(books[quantityOfBooks].toString()));
+    public void add(Book bookToAdd) {
+        books[quantityOfBooks] = bookToAdd;
         if (maxLength < books[quantityOfBooks].getInformationLength()) {
             maxLength = books[quantityOfBooks].getInformationLength();
         }
@@ -67,4 +64,13 @@ public class BookShelf {
         quantityOfBooks = 0;
         maxLength = 0;
     }
+
+    public int getQuantityOfBooks() {
+        return quantityOfBooks;
+    }
+
+    public int getFreeSpace() {
+        return MAX_SPACE - getQuantityOfBooks();
+    }
+
 }
