@@ -17,11 +17,13 @@ public class BookShelf {
     }
 
     public void add(Book bookToAdd) {
-        books[quantityOfBooks] = bookToAdd;
-        if (maxLength < books[quantityOfBooks].getInformationLength()) {
-            maxLength = books[quantityOfBooks].getInformationLength();
+        if (bookToAdd != null) {
+            books[quantityOfBooks] = bookToAdd;
+            if (maxLength < books[quantityOfBooks].getInformationLength()) {
+                maxLength = books[quantityOfBooks].getInformationLength();
+            }
+            quantityOfBooks++;
         }
-        quantityOfBooks++;
     }
 
     public void delete(int bookNumber) {
