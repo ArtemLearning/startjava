@@ -5,8 +5,8 @@ import java.util.Arrays;
 public class BookShelf {
 
     private static final int MAX_SPACE = 10;
-    Book[] books = new Book[MAX_SPACE];
-    private int quantityOfBooks = 0;
+    private Book[] books = new Book[MAX_SPACE];
+    private int quantityOfBooks;
     private int maxLength;
 
     public Book[] getBooks() {
@@ -16,37 +16,36 @@ public class BookShelf {
         return null;
     }
 
-    public void add(Book bookToAdd) {
-        if (bookToAdd != null) {
-            books[quantityOfBooks] = bookToAdd;
-            if (maxLength < books[quantityOfBooks].getInformationLength()) {
-                maxLength = books[quantityOfBooks].getInformationLength();
+    public void add(Book book) {
+        if (book != null) {
+            books[quantityOfBooks] = book;
+            if (maxLength < books[quantityOfBooks].getInfoLen()) {
+                maxLength = books[quantityOfBooks].getInfoLen();
             }
             quantityOfBooks++;
         }
     }
 
     public void delete(int bookNumber) {
-        Book[] changeBooks = new Book[books.length - 1];
-        System.arraycopy(books, 0, changeBooks, 0, bookNumber);
-        int fromIndex = books.length - (bookNumber + 1);
-        System.arraycopy(books, bookNumber + 1, changeBooks, bookNumber, fromIndex);
-        System.arraycopy(changeBooks, 0, books, 0, changeBooks.length);
+        int bookNumberLength = books[bookNumber].getInfoLen();
+        System.arraycopy(books, bookNumber + 1, books, bookNumber, quantityOfBooks - (bookNumber + 1));
         quantityOfBooks--;
-        setMaximumLength(books);
+        if (maxLength == bookNumberLength) {
+            calculateMaxLen();
+        }
     }
 
-    private void setMaximumLength(Book[] books) {
+    private void calculateMaxLen() {
         maxLength = 0;
         for (int i = 0; i < quantityOfBooks; i++) {
-            if (books[i].getInformationLength() > maxLength) {
-                maxLength = books[i].getInformationLength();
+            if (maxLength < books[i].getInfoLen()) {
+                maxLength = books[i].getInfoLen();
             }
         }
     }
 
     public void clearShelf() {
-        books = new Book[MAX_SPACE];
+        Arrays.fill(books, 0, quantityOfBooks, null);
         quantityOfBooks = 0;
         maxLength = 0;
     }
@@ -55,7 +54,7 @@ public class BookShelf {
         return quantityOfBooks;
     }
 
-    public int getFreeSpace() {
+    public int calculateFreeSpace() {
         return MAX_SPACE - getQuantityOfBooks();
     }
 

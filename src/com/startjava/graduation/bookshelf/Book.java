@@ -6,17 +6,17 @@ public class Book {
     private final String author;
     private final String name;
     private final Year publishYear;
-    private final int informationLength;
+    private final int infoLen;
 
     public Book(String name, String author, Year year) {
         this.name = name;
         this.author = author;
         this.publishYear = year;
-        informationLength = toString().length();
+        infoLen = toString().length();
     }
 
-    public int getInformationLength() {
-        return informationLength;
+    public int getInfoLen() {
+        return infoLen;
     }
 
     @Override

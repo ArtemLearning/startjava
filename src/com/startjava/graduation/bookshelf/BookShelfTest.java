@@ -54,7 +54,7 @@ public class BookShelfTest {
 
     private static void showMenu() {
         System.out.println("В шкафу " + myShelf.getQuantityOfBooks() + " книг и свободно " +
-                myShelf.getFreeSpace() + " полок");
+                myShelf.calculateFreeSpace() + " полок");
         System.out.println("Выберите действие:");
         System.out.println("1. Добавить книгу");
         System.out.println("2. Удалить книгу");
@@ -73,7 +73,7 @@ public class BookShelfTest {
     }
 
     private static Book addBook() {
-        if (myShelf.getFreeSpace() == 0) {
+        if (myShelf.calculateFreeSpace() == 0) {
             System.out.println("Книжный шкаф заполнен полностью. Удалите книгу, либо очистите шкаф");
             return null;
         }
