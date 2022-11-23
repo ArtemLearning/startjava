@@ -75,7 +75,7 @@ public class BookShelfTest {
     private static Book addBook() {
         if (myShelf.calculateFreeSpace() == 0) {
             System.out.println("Книжный шкаф заполнен полностью. Удалите книгу, либо очистите шкаф");
-            return null;
+        return null;
         }
         System.out.print("Введите название книги: ");
         Scanner input = new Scanner(System.in);

@@ -5,15 +5,12 @@ import java.util.Arrays;
 public class BookShelf {
 
     private static final int MAX_SPACE = 10;
-    private Book[] books = new Book[MAX_SPACE];
+    private final Book[] books = new Book[MAX_SPACE];
     private int quantityOfBooks;
     private int maxLength;
 
     public Book[] getBooks() {
-        if (books != null) {
-            return Arrays.copyOf(books, quantityOfBooks);
-        }
-        return null;
+        return Arrays.copyOf(books, quantityOfBooks);
     }
 
     public void add(Book book) {
