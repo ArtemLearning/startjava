@@ -15,6 +15,10 @@ public class Book {
         infoLen = toString().length();
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getInfoLen() {
         return infoLen;
     }

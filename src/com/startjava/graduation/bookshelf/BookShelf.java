@@ -23,13 +23,27 @@ public class BookShelf {
         }
     }
 
-    public void delete(int bookNumber) {
-        int bookNumberLength = books[bookNumber].getInfoLen();
-        System.arraycopy(books, bookNumber + 1, books, bookNumber, quantityOfBooks - (bookNumber + 1));
-        quantityOfBooks--;
-        if (maxLength == bookNumberLength) {
-            calculateMaxLen();
+    public void delete(String name) {
+        try {
+            int bookNumber = findBookByName(name);
+            int bookLen = books[bookNumber].getInfoLen();
+            System.arraycopy(books, bookNumber + 1, books, bookNumber, quantityOfBooks - (bookNumber + 1));
+            quantityOfBooks--;
+            if (maxLength == bookLen) {
+                calculateMaxLen();
+            }
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
         }
+    }
+
+    private int findBookByName(String name) {
+        for (int i = 0; i < books.length; i++) {
+            if (books[i].getName().equals(name)) {
+                return i;
+            }
+        }
+        throw new RuntimeException("Нет книги с таким именем.");
     }
 
     private void calculateMaxLen() {
@@ -58,5 +72,4 @@ public class BookShelf {
     public int getMaxLength() {
         return maxLength;
     }
-
 }

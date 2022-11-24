@@ -13,10 +13,10 @@ public class BookShelfTest {
         while (menuItem != 4) {
             showBooks(myShelf.getBooks());
             showMenu();
-            menuItem = getAction();
+            menuItem = chooseMenuItem();
             switch (menuItem) {
-                case 1 -> myShelf.add(addBook());
-                case 2 -> myShelf.delete(getBookNumberToDelete() - 1);
+                case 1 -> addBook();
+                case 2 -> deleteBook();
                 case 3 -> myShelf.clearShelf();
                 default -> System.out.println("Выход из программы");
             }
@@ -26,30 +26,18 @@ public class BookShelfTest {
     private static void showBooks(Book[] books) {
         if (books != null) {
             for (Book book : books) {
-                show(book);
+                System.out.println(printSingleBook(book.toString()));
             }
         }
     }
 
-    private static void show(Book bookToShow) {
-        System.out.println(printSingleString(bookToShow.toString()));
-        System.out.println(printUnderscores());
-    }
-
-    private static String printSingleString(String str) {
-        str = "|" + str;
-        for (int i = str.length(); i <= myShelf.getMaxLength(); i++) {
-            str = str + " ";
-        }
-        return str + "|";
-    }
-
-    private static String printUnderscores() {
-        String str = "|";
-        for (int i = 1; i <= myShelf.getMaxLength(); i++) {
-            str = str + "_";
-        }
-        return str + "|";
+    private static String printSingleBook(String str) {
+        str = str + " ".repeat(myShelf.getMaxLength() - str.length());
+        String underscore = "_".repeat(myShelf.getMaxLength());
+        str = """
+                |%s|
+                |%s|""".formatted(str, underscore);
+        return str;
     }
 
     private static void showMenu() {
@@ -62,20 +50,19 @@ public class BookShelfTest {
         System.out.println("4. Завершить работу");
     }
 
-    private static int getAction() {
+    private static int chooseMenuItem() {
         Scanner input = new Scanner(System.in);
         try {
             return input.nextInt();
         } catch (InputMismatchException e) {
             System.out.println("Введите число от 1 до 4");
-            return getAction();
+            return chooseMenuItem();
         }
     }
 
-    private static Book addBook() {
+    private static void addBook() {
         if (myShelf.calculateFreeSpace() == 0) {
             System.out.println("Книжный шкаф заполнен полностью. Удалите книгу, либо очистите шкаф");
-        return null;
         }
         System.out.print("Введите название книги: ");
         Scanner input = new Scanner(System.in);
@@ -83,11 +70,11 @@ public class BookShelfTest {
         System.out.print("Введите автора книги: ");
         String author = input.nextLine();
         System.out.print("Введите год издания: ");
-        Year year = setPublishYear(input.nextLine());
-        return new Book(name, author, year);
+        Year year = inputYear(input.nextLine());
+        myShelf.add(new Book(name, author, year));
     }
 
-    private static Year setPublishYear(String year) {
+    private static Year inputYear(String year) {
         try {
             if (Year.parse(year).isAfter(Year.now())) {
                 return getCorrectYear();
@@ -101,11 +88,12 @@ public class BookShelfTest {
     private static Year getCorrectYear() {
         System.out.println("Введён неправильный год издания. Введите корректный год.");
         Scanner input = new Scanner(System.in);
-        return setPublishYear(input.nextLine());
+        return inputYear(input.nextLine());
     }
 
-    private static int getBookNumberToDelete() {
-        System.out.println("Укажите номер книги для удаления:");
-        return getAction();
+    private static void deleteBook() {
+        System.out.println("Укажите название книги для удаления:");
+        Scanner input = new Scanner(System.in);
+        myShelf.delete(input.nextLine());
     }
 }
