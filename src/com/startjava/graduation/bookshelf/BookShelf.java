@@ -38,7 +38,7 @@ public class BookShelf {
     }
 
     private int findBookByName(String name) {
-        for (int i = 0; i < books.length; i++) {
+        for (int i = 0; i < quantityOfBooks; i++) {
             if (books[i].getName().equals(name)) {
                 return i;
             }
