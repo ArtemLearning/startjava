@@ -32,12 +32,11 @@ public class BookShelfTest {
     }
 
     private static String printSingleBook(String str) {
-        str = str + " ".repeat(myShelf.getMaxLength() - str.length());
+        String text = str + " ".repeat(myShelf.getMaxLength() - str.length());
         String underscore = "_".repeat(myShelf.getMaxLength());
-        str = """
+        return """
                 |%s|
-                |%s|""".formatted(str, underscore);
-        return str;
+                |%s|""".formatted(text, underscore);
     }
 
     private static void showMenu() {
