@@ -24,9 +24,10 @@ public class BookShelf {
     }
 
     public void delete(String name) {
-        int position = findBook(name);
-        if (position != -1) {
-            int bookLen = books[position].getInfoLen();
+        Book book = findBook(name);
+        if (book != null) {
+            int bookLen = book.getInfoLen();
+            int position = getPosition(book);
             System.arraycopy(books, position + 1, books, position, quantityOfBooks - (position + 1));
             quantityOfBooks--;
             if (maxLen == bookLen) {
@@ -37,9 +38,18 @@ public class BookShelf {
         }
     }
 
-    public int findBook(String name) {
+    public Book findBook(String name) {
         for (int i = 0; i < quantityOfBooks; i++) {
             if (books[i].getName().equals(name)) {
+                return books[i];
+            }
+        }
+        return null;
+    }
+
+    private int getPosition(Book book) {
+        for (int i=0; i < books.length; i++) {
+            if (books[i] == book) {
                 return i;
             }
         }

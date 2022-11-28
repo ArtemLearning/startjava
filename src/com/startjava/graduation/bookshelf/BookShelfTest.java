@@ -78,19 +78,16 @@ public class BookShelfTest {
 
     private static Year inputYear(Scanner input) {
         String info = input.nextLine();
+        Year year = null;
         try {
-            if (Year.parse(info).isAfter(Year.now())) {
-                return fixYear(input);
-            }
-            return Year.parse(info);
-        } catch (DateTimeParseException e) {
-            return fixYear(input);
+            year = Year.parse(info);
+        } catch (DateTimeParseException ignored) {
         }
-    }
-
-    private static Year fixYear(Scanner input) {
-        System.out.println("Введён неправильный год издания. Введите корректный год.");
-        return inputYear(input);
+        if (year == null || year.isAfter(Year.now())) {
+            System.out.println("Введён неправильный год издания. Введите корректный год.");
+            return inputYear(input);
+        }
+        return year;
     }
 
     private static void deleteBook(Scanner input) {
@@ -100,7 +97,7 @@ public class BookShelfTest {
 
     private static void findBook(Scanner input) {
         System.out.println("Укажите название книги для поиска:");
-        Book foundBook = myShelf.getBooks()[myShelf.findBook(input.nextLine())];
+        Book foundBook = myShelf.findBook(input.nextLine());
         if (foundBook != null) {
             printBook(foundBook.toString());
         } else {
